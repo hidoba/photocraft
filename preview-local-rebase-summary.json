@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "candidate_tree": "eb5100a183c2401e878207f32ac071dbbe2e4cad",
+    "comparison_base": "2b32ad9fc0e779ab2071a8a9a647ce36e0527802",
+    "upstream_main": "99e1138877e6aa7e856c6883b415e708d042fc59",
+    "candidate_commit": "3e0cefc607331aac49563697f3592c7c7ea5cba4",
+    "toolchain": "Rust 1.99.0",
+    "profile": "release thin-LTO, one codegen unit",
+    "image": "synthetic 6000x4000 RGBA8",
+    "harness": "1000x700 offscreen wgpu with project adapter setup",
+    "caveat": "Completed frames include GPU rendering and readback; these are not native input-to-display latency. Previous is the published PR head; current is the local rebased PR. This checks for a rebase regression, not a comparison against unchanged upstream.",
+    "binaries": {
+      "previous": "3c19d8dcb6cbe3f84dc919acf4769fd814920deb45198969fa6fa6a5251e9331",
+      "current": "b4b482356a8027e1ec85ac20928e59ae4fc69d542ccaa557558396273734056e"
+    }
+  },
+  "results": {
+    "previous": {
+      "composite": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.10556950000000001,
+          "p95": 0.21906799999999998,
+          "minimum": 0.06971,
+          "maximum": 0.221089
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.455774,
+          "p95": 2.2869729999999997,
+          "minimum": 1.3297,
+          "maximum": 2.446972
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 1.177796,
+          "p95": 1.2964300000000002,
+          "minimum": 1.136932,
+          "maximum": 1.770207
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 2.70665,
+          "p95": 3.1681470000000003,
+          "minimum": 2.542921,
+          "maximum": 3.263036
+        }
+      },
+      "red-all-visible": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.052535,
+          "p95": 0.165229,
+          "minimum": 0.024859,
+          "maximum": 0.183928
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.3518949999999998,
+          "p95": 1.5382289999999998,
+          "minimum": 1.27914,
+          "maximum": 1.6721780000000002
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 0.0446895,
+          "p95": 0.102229,
+          "minimum": 0.03587,
+          "maximum": 0.119519
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 1.4957090000000002,
+          "p95": 2.187204,
+          "minimum": 1.434329,
+          "maximum": 2.226204
+        }
+      },
+      "red-only": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.044395000000000004,
+          "p95": 0.16794800000000001,
+          "minimum": 0.027250000000000003,
+          "maximum": 0.20760900000000002
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.35646,
+          "p95": 1.611268,
+          "minimum": 1.28883,
+          "maximum": 1.697287
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 0.0418295,
+          "p95": 0.100999,
+          "minimum": 0.03434,
+          "maximum": 0.108629
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 1.484624,
+          "p95": 1.632968,
+          "minimum": 1.436709,
+          "maximum": 1.693217
+        }
+      }
+    },
+    "current": {
+      "composite": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.11516399999999999,
+          "p95": 0.194759,
+          "minimum": 0.07079,
+          "maximum": 0.276958
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.473189,
+          "p95": 2.257423,
+          "minimum": 1.3231600000000001,
+          "maximum": 2.433772
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 1.1782515,
+          "p95": 1.277051,
+          "minimum": 1.132452,
+          "maximum": 1.980225
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 2.67626,
+          "p95": 3.194827,
+          "minimum": 2.557881,
+          "maximum": 4.0129600000000005
+        }
+      },
+      "red-all-visible": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.0450445,
+          "p95": 0.163438,
+          "minimum": 0.025649,
+          "maximum": 0.173289
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.3486950000000002,
+          "p95": 1.535599,
+          "minimum": 1.27957,
+          "maximum": 1.626358
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 0.041435,
+          "p95": 0.098769,
+          "minimum": 0.035568999999999996,
+          "maximum": 0.102489
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 1.486064,
+          "p95": 1.5668579999999999,
+          "minimum": 1.436769,
+          "maximum": 1.578259
+        }
+      },
+      "red-only": {
+        "geometry_ms": {
+          "n": 54,
+          "median": 0.041334499999999996,
+          "p95": 0.150459,
+          "minimum": 0.026339,
+          "maximum": 0.183069
+        },
+        "completed_frame_ms": {
+          "n": 54,
+          "median": 1.3486150000000001,
+          "p95": 1.571608,
+          "minimum": 1.28622,
+          "maximum": 1.6576080000000002
+        },
+        "warp_ms": {
+          "n": 54,
+          "median": 0.0419545,
+          "p95": 0.1001,
+          "minimum": 0.03588,
+          "maximum": 0.10682900000000001
+        },
+        "completed_warp_frame_ms": {
+          "n": 54,
+          "median": 1.4843389999999999,
+          "p95": 1.645097,
+          "minimum": 1.445829,
+          "maximum": 2.3822029999999996
+        }
+      }
+    }
+  }
+}

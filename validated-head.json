@@ -1,0 +1,37 @@
+{
+  "head": "ad7d704789bcf5e87f603fedebec83c9c0b3301c",
+  "tree": "a7c0882a58464300339cf1d7263dd904716a02c0",
+  "upstream": "99e1138877e6aa7e856c6883b415e708d042fc59",
+  "tests": {
+    "suites": 83,
+    "passed": 4618,
+    "failed": 0,
+    "ignored": 32,
+    "focused_passed": 8,
+    "regression_cases": 33
+  },
+  "gates": {
+    "clippy": "passed",
+    "fmt": "passed",
+    "layers": "passed",
+    "wasm": "passed",
+    "panic-hunt": "passed",
+    "perf-quick": "passed"
+  },
+  "release_binary_sha256": "24fc63fdc260056b826994eb1be71565e227e6c2615924b4a3650f1a473d3c53",
+  "source_sha256": {
+    "crates/engine/src/channel_cmds.rs": "40a1c5faa25aec15d9c46738b806de0959b0b0843ba3548bd680d2853f41ff0d",
+    "crates/engine/src/channel_transform/tests.rs": "75e7bbcc5a03a67e75c2a57419e3bf80b5335bd0f405ac54a601439318fe972f",
+    "crates/ui-egui/src/channel_transform_preview.rs": "f2bd5a8a3307fab2380f5a9db2f9afca77213f0901155058131c2f7edae06745",
+    "crates/ui-egui/src/jobs_ui_tests.rs": "5683df789034e8af2082445df7ea009e22987a2d2646ae27b6c90e3f009fe29c"
+  },
+  "screenshots_sha256": {
+    "quick-mask-fix-affine-preview.png": "5e8e86cc9b2a47a79bb38479680f209f154ac7d58f63f4a7a58fc16cbd2a2be1",
+    "quick-mask-fix-warp-preview.png": "212d651d45351c1a722af352f63d990edfbc637649ab7fe492b1a86a56502a4d",
+    "quick-mask-fix-affine-commit.png": "5cfbe0bedaa753389e2a831d5a5b91dc804ecb7f5d8cc510ec62161ede55b5fd",
+    "quick-mask-fix-warp-commit.png": "5cfbe0bedaa753389e2a831d5a5b91dc804ecb7f5d8cc510ec62161ede55b5fd"
+  },
+  "review": "Follow-up review of final fix and regression diff: no further actionable findings",
+  "measured_gpu_candidate": "3e0cefc607331aac49563697f3592c7c7ea5cba4",
+  "validation_provenance": "Tests and release build ran before committing the two review fixes; committed source hashes match exactly."
+}
