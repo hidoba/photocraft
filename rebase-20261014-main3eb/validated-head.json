@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "pr": "https://github.com/storytold/photocraft/pull/4648",
+  "head": "7d38984407aaa344aeb3c86f00f14798b019b91f",
+  "tree": "a952444812ea83605b94785d4795f441b98938ae",
+  "main_base": "3ebc42a200e0014a1b80ae22bd9488ddbdf65387",
+  "toolchain": "Rust 1.99.0",
+  "full_tests": {
+    "passed": 5397,
+    "failed": 0,
+    "ignored": 54,
+    "suites": 87,
+    "exit_code": 0
+  },
+  "transform_gpu_tests": {
+    "passed": 3,
+    "adapter": "llvmpipe Vulkan",
+    "coverage": "Native U8/U16/F32; sparse and high-frequency channels; affine/perspective/Warp; all channel eyes; selection coverage; solid one-column stretch across a tile boundary; exact preservation of untargeted samples"
+  },
+  "checks": {
+    "strict_all_target_clippy": "passed",
+    "formatting": "passed",
+    "layers": "passed",
+    "wasm_including_heif_check": "passed",
+    "adversarial_commands": "passed",
+    "quick_performance": {
+      "status": "passed",
+      "failures": [],
+      "adapter": "NVIDIA GeForce RTX 3090 Vulkan",
+      "note": "Quick run: budgets do not apply. No baseline updated. Native NVIDIA Vulkan; not a new 24 MP channel-preview A/B measurement.",
+      "baseline_note": "baseline is from machine class `macos-aarch64-apple-m4-pro-apple-m4-pro`, this is `linux-x86-64-amd-ryzen-7-9700x-8-core-processor-nvidia-geforce-rtx-3090`: regression check skipped"
+    },
+    "24mp_comparison": {
+      "status": "completed",
+      "before": "ddba4761e79cfcf423f6c967edd25112e7415a45",
+      "after": "217f78a46d14c39b7f67fb631af395157c4ebd5b",
+      "adapter": "llvmpipe Vulkan software adapter",
+      "runs_per_build_per_mode": 6,
+      "samples_per_case_per_mode": 54,
+      "integer_rgb_visible_ms": [
+        7.782,
+        8.487
+      ],
+      "integer_red_only_ms": [
+        7.561,
+        7.595
+      ],
+      "fractional_rgb_visible_ms": [
+        20.716,
+        23.654
+      ],
+      "fractional_red_only_ms": [
+        20.304,
+        23.198
+      ],
+      "scope": "Warmed 24 MP fixture, 1.5 MP proxy, 1000x700 offscreen frames and readback; excludes initial capture/upload and commit. Mesh Warp remains comparable; fractional affine sampling has roughly 3 ms software overhead for native edge repeat/coverage. No new NVIDIA timing claim.",
+      "source_scope": "Earlier measurement at 217f78a4; GPU implementation and its oracle-test source are byte-identical at the current head. No new direct timing measurement is claimed."
+    }
+  },
+  "visual_verification": {
+    "adapter": "llvmpipe Vulkan GPU canvas",
+    "captures": [
+      "before.png",
+      "affine.png",
+      "warp.png",
+      "target-hidden.png"
+    ],
+    "observed": "Green alone moves; Red stays in place; selection outline follows the transform; Warp controls and geometry remain when Green is hidden",
+    "status": "passed",
+    "source": "7d38984407aaa344aeb3c86f00f14798b019b91f"
+  },
+  "production_notes": [
+    "All original eight commits replayed; native target routing, source capture, visibility and locks retained",
+    "Upstream selection frame, marching ants and content/guide/handle drawing order retained",
+    "Cached RGB affine shader matches upstream edge-repeat and per-tile outline coverage; mesh Warp keeps its own sampling",
+    "Nearest translations avoid coverage work; kernels wholly inside the source avoid redundant tap clamping",
+    "Current upstream guide snapping, transform cursor and drawing changes auto-merged without production-code conflicts; progress notes are separated from shared summary headers"
+  ],
+  "publication": {
+    "source_pushed": true,
+    "head": "7d38984407aaa344aeb3c86f00f14798b019b91f",
+    "observed_github_base": "8d840eab5962b41e4e15b115107eef8384648fb5",
+    "mergeable": true,
+    "workflows": "action_required; no jobs started"
+  },
+  "historical_upstream_failure": {
+    "test": "adjust_preview::tests::preview_composite_matches_the_destructive_command",
+    "failed_upstream_baseline": "835f33a476cba54657132f79089b1ada20b8d6b8",
+    "status_at_current_head": "Resolved by newer upstream; the adjustment-preview test now passes in the full suite.",
+    "historical_record": "https://raw.githubusercontent.com/hidoba/photocraft/40c6527fc7b5d7ef58ba9dda0217ef00fc3ae8e2/rebase-20261014-main835/validated-head.json"
+  },
+  "gate_exit_codes": {
+    "fmt": 0,
+    "clippy": 0,
+    "layers": 0,
+    "wasm": 0,
+    "panic-hunt": 0,
+    "perf-quick": 0
+  }
+}

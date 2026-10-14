@@ -1,0 +1,26 @@
+{
+  "fmt": {
+    "exit_code": 0,
+    "seconds": 4.79
+  },
+  "clippy": {
+    "exit_code": 0,
+    "seconds": 409.01
+  },
+  "layers": {
+    "exit_code": 0,
+    "seconds": 0.48
+  },
+  "wasm": {
+    "exit_code": 0,
+    "seconds": 44.32
+  },
+  "panic-hunt": {
+    "exit_code": 0,
+    "seconds": 100.8
+  },
+  "perf-quick": {
+    "exit_code": 0,
+    "seconds": 700.76
+  }
+}
