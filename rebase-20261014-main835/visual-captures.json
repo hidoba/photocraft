@@ -1,0 +1,13 @@
+{
+  "source": "217f78a46d14c39b7f67fb631af395157c4ebd5b",
+  "base": "835f33a476cba54657132f79089b1ada20b8d6b8",
+  "adapter": "llvmpipe Vulkan GPU canvas",
+  "fixture": "Synthetic 32x24 RGB8 white canvas; black Red/Green strokes; partial selection; Green targeted with all RGB eyes visible; drag +3,+2; Warp; hide Green",
+  "captures": [
+    "before.png",
+    "affine.png",
+    "warp.png",
+    "target-hidden.png"
+  ],
+  "observations": "Green alone moves; Red stays in place; selection outline follows the transform; Warp controls and geometry remain when Green is hidden"
+}

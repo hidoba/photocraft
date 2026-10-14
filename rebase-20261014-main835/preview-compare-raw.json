@@ -1,0 +1,3698 @@
+[
+  {
+    "mode": "integer",
+    "run": 0,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.811941,
+          4.867201,
+          5.6620669999999995,
+          4.070563999999999,
+          4.894391,
+          5.776657,
+          5.29139,
+          7.232691,
+          3.9287640000000006
+        ],
+        "completed_warp_frame_ms": [
+          9.215554000000001,
+          9.977691,
+          7.50364,
+          7.422011,
+          7.9445179999999995,
+          8.537037000000002,
+          7.73788,
+          7.082812,
+          9.740371
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.24792899999999998,
+          0.272579,
+          0.182969,
+          0.19202,
+          0.15982,
+          0.17448999999999998,
+          0.257579,
+          0.22397899999999998,
+          0.169549
+        ],
+        "warp_ms": [
+          1.496555,
+          1.642624,
+          1.4855440000000002,
+          1.426424,
+          1.405844,
+          1.711154,
+          1.7857129999999999,
+          1.458364,
+          1.475304
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.656255999999999,
+          13.374308,
+          9.422592,
+          6.482385,
+          9.918741,
+          10.648498,
+          6.9173029999999995,
+          6.790832999999999,
+          7.755828999999999
+        ],
+        "completed_warp_frame_ms": [
+          22.653571,
+          21.898194,
+          23.030939,
+          25.984028,
+          26.826914,
+          25.33414,
+          26.078267,
+          30.722229,
+          25.203751
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.20743,
+          0.330679,
+          0.259719,
+          0.17112,
+          0.181999,
+          0.273959,
+          0.18167899999999998,
+          0.196409,
+          0.171519
+        ],
+        "warp_ms": [
+          0.384589,
+          0.24467899999999998,
+          0.320838,
+          0.253039,
+          0.243539,
+          0.357068,
+          0.288999,
+          0.389949,
+          0.288969
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          8.904965,
+          10.01889,
+          8.516037,
+          8.431406,
+          7.292991000000001,
+          7.67155,
+          6.280235,
+          6.740234,
+          8.422107
+        ],
+        "completed_warp_frame_ms": [
+          22.587621,
+          22.399952,
+          23.039049,
+          22.199963,
+          24.303254,
+          22.567981,
+          22.527431,
+          22.84948,
+          21.006117
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.362728,
+          0.262069,
+          0.182299,
+          0.169829,
+          0.23496899999999998,
+          0.14762,
+          0.16208,
+          0.12024,
+          0.16683900000000002
+        ],
+        "warp_ms": [
+          0.247369,
+          0.24177,
+          0.243719,
+          0.27265900000000004,
+          0.199009,
+          0.27817899999999995,
+          0.36217900000000003,
+          0.232869,
+          0.271449
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 0,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.868329999999999,
+          5.075551,
+          4.725111,
+          4.146343,
+          4.552302,
+          4.218394,
+          4.583162,
+          5.6066579999999995,
+          4.91198
+        ],
+        "completed_warp_frame_ms": [
+          9.182553,
+          7.8954390000000005,
+          7.6266,
+          7.54976,
+          7.916189,
+          7.869409000000001,
+          7.320461,
+          6.875293,
+          7.224661
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.213739,
+          0.18534,
+          0.152539,
+          0.18326900000000002,
+          0.1916,
+          0.19777,
+          0.199879,
+          0.207089,
+          0.200079
+        ],
+        "warp_ms": [
+          1.641043,
+          1.593454,
+          1.667583,
+          1.398895,
+          1.514484,
+          1.613694,
+          1.529564,
+          1.401395,
+          1.437624
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          7.258541,
+          6.8484430000000005,
+          7.222802000000001,
+          7.43452,
+          9.435373,
+          7.750940000000001,
+          10.03059,
+          8.006958999999998,
+          8.357356999999999
+        ],
+        "completed_warp_frame_ms": [
+          24.209655,
+          23.196138,
+          23.607927,
+          22.580441,
+          23.039079,
+          19.139415,
+          21.500905,
+          22.183142,
+          20.34488
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.170369,
+          0.19455899999999998,
+          0.14908,
+          0.236639,
+          0.327409,
+          0.20414900000000002,
+          0.248389,
+          0.36040900000000003,
+          0.238099
+        ],
+        "warp_ms": [
+          0.349549,
+          0.336348,
+          0.24923900000000002,
+          0.331809,
+          0.313889,
+          0.240269,
+          0.26453899999999997,
+          0.266179,
+          0.257749
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          6.5169939999999995,
+          6.212994999999999,
+          9.623212,
+          9.235444000000001,
+          6.391934999999999,
+          6.2842649999999995,
+          10.398658999999999,
+          9.746222000000001,
+          6.838823
+        ],
+        "completed_warp_frame_ms": [
+          20.830928,
+          20.843598,
+          20.804198,
+          23.511777000000002,
+          22.534841,
+          22.341842,
+          19.862272,
+          22.058512999999998,
+          21.946153
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.206289,
+          0.192159,
+          0.19499,
+          0.332909,
+          0.209039,
+          0.20246899999999998,
+          0.201329,
+          0.263689,
+          0.21749900000000003
+        ],
+        "warp_ms": [
+          0.319799,
+          0.301149,
+          0.241169,
+          0.33758900000000003,
+          0.273409,
+          0.231999,
+          0.284669,
+          0.247689,
+          0.244949
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 1,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          6.876023,
+          6.061926,
+          5.05375,
+          4.021674,
+          3.9562850000000003,
+          6.119925,
+          4.779941,
+          7.006673,
+          5.525978
+        ],
+        "completed_warp_frame_ms": [
+          8.223047000000001,
+          7.852088999999999,
+          7.809810000000001,
+          7.334681,
+          11.622444,
+          8.920684999999999,
+          8.277997000000001,
+          7.364131,
+          8.522566000000001
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.292449,
+          0.274449,
+          0.276779,
+          0.205629,
+          0.193339,
+          0.186939,
+          0.30132899999999996,
+          0.218479,
+          0.300008
+        ],
+        "warp_ms": [
+          1.4111040000000001,
+          1.560324,
+          1.535954,
+          1.5218129999999999,
+          1.445774,
+          1.6306129999999999,
+          1.521353,
+          1.530984,
+          1.490844
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          10.479559,
+          9.478432,
+          10.28674,
+          9.706761,
+          8.496477,
+          10.518838,
+          9.592032,
+          12.203852,
+          8.682825999999999
+        ],
+        "completed_warp_frame_ms": [
+          24.544542999999997,
+          25.773698,
+          23.823606,
+          24.983812,
+          24.574303,
+          23.788086,
+          25.36391,
+          23.426098,
+          23.120978
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.24678900000000004,
+          0.276019,
+          0.315399,
+          0.204109,
+          0.254759,
+          0.25920899999999997,
+          0.235789,
+          0.32603899999999997,
+          0.274769
+        ],
+        "warp_ms": [
+          0.261678,
+          0.333189,
+          0.294949,
+          0.36748899999999995,
+          0.32777799999999996,
+          0.246069,
+          0.289669,
+          0.343099,
+          0.307398
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          7.64265,
+          6.683503,
+          7.092322,
+          8.374417000000001,
+          7.5062999999999995,
+          7.094662,
+          6.699074,
+          8.525086,
+          7.038243
+        ],
+        "completed_warp_frame_ms": [
+          21.924584,
+          21.308676,
+          25.617369,
+          26.654674999999997,
+          30.135011,
+          26.952274,
+          22.559901,
+          25.067731,
+          27.154903
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.350548,
+          0.218449,
+          0.170349,
+          0.15037,
+          0.269059,
+          0.28928899999999996,
+          0.16598000000000002,
+          0.213719,
+          0.23247
+        ],
+        "warp_ms": [
+          0.347109,
+          0.223149,
+          0.37880800000000003,
+          0.259909,
+          0.341568,
+          0.26721900000000004,
+          0.322618,
+          0.296379,
+          0.389088
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 1,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          8.797726,
+          5.0235899999999996,
+          4.451392,
+          5.332719,
+          4.278513,
+          4.831951,
+          5.025191,
+          4.378742,
+          4.5622620000000005
+        ],
+        "completed_warp_frame_ms": [
+          8.544596,
+          7.8161499999999995,
+          7.854998999999999,
+          7.945218000000001,
+          7.052472,
+          7.819408999999999,
+          9.378653,
+          7.69149,
+          7.65508
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.297239,
+          0.250239,
+          0.276859,
+          0.16734900000000003,
+          0.222289,
+          0.263689,
+          0.320439,
+          0.24760899999999997,
+          0.166769
+        ],
+        "warp_ms": [
+          1.4526439999999998,
+          1.509254,
+          1.664773,
+          1.589083,
+          1.448344,
+          1.439905,
+          1.4994349999999999,
+          1.9710130000000001,
+          1.538324
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.418376,
+          7.259692,
+          8.842065,
+          7.2246619999999995,
+          9.200853,
+          10.948147,
+          7.941508999999999,
+          10.532228,
+          9.043805
+        ],
+        "completed_warp_frame_ms": [
+          22.856250000000003,
+          23.725597,
+          25.162811,
+          26.670983999999997,
+          22.423572,
+          25.052181,
+          22.68899,
+          20.883228,
+          23.288798999999997
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.295679,
+          0.22071,
+          0.233629,
+          0.26791899999999996,
+          0.241739,
+          0.203589,
+          0.203439,
+          0.264929,
+          0.258789
+        ],
+        "warp_ms": [
+          0.379709,
+          0.32392899999999997,
+          0.241539,
+          0.321868,
+          0.334169,
+          0.265729,
+          0.322319,
+          0.255859,
+          0.33315900000000004
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          7.0212520000000005,
+          7.938149,
+          7.4940500000000005,
+          7.71613,
+          7.47471,
+          8.237938,
+          7.6389190000000005,
+          10.22968,
+          8.116628
+        ],
+        "completed_warp_frame_ms": [
+          23.069369,
+          21.140625999999997,
+          24.129055,
+          21.941163,
+          21.410766000000002,
+          21.891074,
+          21.811344,
+          20.062841000000002,
+          20.379259
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.229599,
+          0.266389,
+          0.211929,
+          0.197209,
+          0.21597899999999998,
+          0.259679,
+          0.287818,
+          0.21223,
+          0.333369
+        ],
+        "warp_ms": [
+          0.39950800000000003,
+          0.210339,
+          0.226949,
+          0.284949,
+          0.23497,
+          0.23737899999999998,
+          0.27407899999999996,
+          0.22513899999999998,
+          0.31457799999999997
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 2,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          6.196756000000001,
+          5.813907,
+          4.885689999999999,
+          5.2951999999999995,
+          4.663621,
+          5.365029000000001,
+          5.437458,
+          4.806512,
+          6.035236
+        ],
+        "completed_warp_frame_ms": [
+          7.66812,
+          8.347367,
+          7.915989,
+          8.161438,
+          7.4296809999999995,
+          7.50861,
+          8.394147,
+          8.241397,
+          10.126069999999999
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.207619,
+          0.22627899999999998,
+          0.236609,
+          0.249669,
+          0.214769,
+          0.210769,
+          0.283019,
+          0.21968000000000001,
+          0.315798
+        ],
+        "warp_ms": [
+          1.469775,
+          1.437665,
+          1.506825,
+          1.5524740000000001,
+          1.510954,
+          1.580724,
+          1.537214,
+          1.637843,
+          1.5756539999999999
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.825635,
+          8.532546,
+          13.944365,
+          7.892529000000001,
+          7.74905,
+          8.432836,
+          9.391653,
+          10.506869,
+          6.833613
+        ],
+        "completed_warp_frame_ms": [
+          25.819828,
+          21.591915,
+          24.940342,
+          19.942940999999998,
+          30.701739,
+          21.296166,
+          25.807457999999997,
+          23.091249,
+          23.768597
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.218259,
+          0.208549,
+          0.349609,
+          0.277669,
+          0.195689,
+          0.196199,
+          0.250959,
+          0.24614899999999998,
+          0.24749899999999997
+        ],
+        "warp_ms": [
+          0.242269,
+          0.241869,
+          0.269599,
+          0.26920900000000003,
+          1.062916,
+          0.32425899999999996,
+          0.34241900000000003,
+          0.23813900000000002,
+          0.350709
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          6.423984,
+          6.109776,
+          5.919027000000001,
+          7.3897010000000005,
+          7.263751,
+          6.350454999999999,
+          5.806757,
+          6.805243,
+          7.2193320000000005
+        ],
+        "completed_warp_frame_ms": [
+          22.345462,
+          20.637908,
+          22.258271999999998,
+          25.576060000000002,
+          21.904083,
+          21.622325,
+          24.253694,
+          25.564489,
+          20.35605
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.209109,
+          0.19089,
+          0.12655000000000002,
+          0.20824900000000002,
+          0.289159,
+          0.325269,
+          0.18587,
+          0.186169,
+          0.316849
+        ],
+        "warp_ms": [
+          0.340288,
+          0.230949,
+          0.300139,
+          0.293649,
+          0.206389,
+          0.250369,
+          0.416068,
+          0.236859,
+          0.27368899999999996
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 2,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          6.346175,
+          5.429899,
+          4.673241,
+          6.270406,
+          6.231065,
+          4.328503,
+          4.195494,
+          4.816660000000001,
+          4.273243000000001
+        ],
+        "completed_warp_frame_ms": [
+          8.241557,
+          8.131768,
+          8.799905,
+          8.384857,
+          8.321617,
+          8.569766,
+          9.243863999999999,
+          7.693709,
+          7.297082
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.21403899999999998,
+          0.275009,
+          0.218219,
+          0.316059,
+          0.197839,
+          0.192349,
+          0.178349,
+          0.266048,
+          0.204849
+        ],
+        "warp_ms": [
+          1.426854,
+          1.568294,
+          1.7165329999999999,
+          1.537434,
+          1.6994429999999998,
+          1.648754,
+          1.490695,
+          1.528184,
+          1.465255
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.163788,
+          10.025511000000002,
+          12.161612,
+          10.419008999999999,
+          11.926992,
+          10.584659,
+          9.046714000000001,
+          8.205288,
+          18.511187
+        ],
+        "completed_warp_frame_ms": [
+          37.713981000000004,
+          33.784087,
+          20.619918000000002,
+          23.663517,
+          26.480385,
+          23.513338,
+          25.771797999999997,
+          33.601547000000004,
+          47.156424
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.195219,
+          0.203429,
+          0.268789,
+          0.204279,
+          0.346858,
+          0.28091900000000003,
+          0.229709,
+          0.208589,
+          0.246179
+        ],
+        "warp_ms": [
+          0.279889,
+          0.370919,
+          0.345918,
+          0.278019,
+          0.241779,
+          0.23099899999999998,
+          0.436828,
+          0.27338900000000005,
+          0.453418
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          8.003999,
+          7.54643,
+          8.355637000000002,
+          6.651224,
+          10.523958,
+          7.66378,
+          7.52489,
+          9.464803000000002,
+          8.797134999999999
+        ],
+        "completed_warp_frame_ms": [
+          20.792308,
+          22.197032,
+          23.680946000000002,
+          22.329632,
+          24.940012,
+          22.236492,
+          24.718923,
+          22.081953000000002,
+          22.385250999999997
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.202449,
+          0.250699,
+          0.22999899999999998,
+          0.191779,
+          0.215689,
+          0.207709,
+          0.286399,
+          0.19921,
+          0.187719
+        ],
+        "warp_ms": [
+          0.216829,
+          0.22716899999999998,
+          0.297739,
+          0.248629,
+          0.26320899999999997,
+          0.332589,
+          0.204129,
+          0.27819900000000003,
+          0.27578800000000003
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 3,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.657358,
+          4.945921,
+          5.552358,
+          4.829670999999999,
+          5.947217,
+          5.138209000000001,
+          6.600684,
+          5.756487,
+          4.888700999999999
+        ],
+        "completed_warp_frame_ms": [
+          10.453988,
+          8.982285,
+          7.799059,
+          7.918629,
+          11.112525999999999,
+          9.954500999999999,
+          7.724569,
+          7.076562,
+          8.126068
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.26032900000000003,
+          0.277619,
+          0.207479,
+          0.21437900000000001,
+          0.208189,
+          0.227339,
+          0.30457900000000004,
+          0.250799,
+          0.255929
+        ],
+        "warp_ms": [
+          1.503624,
+          1.469244,
+          1.519924,
+          1.476114,
+          1.9108319999999999,
+          2.694049,
+          1.478494,
+          1.488484,
+          1.470755
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.046828000000001,
+          8.207257,
+          7.889149,
+          7.73307,
+          8.760185,
+          10.126059999999999,
+          7.184262,
+          7.888049,
+          9.357313000000001
+        ],
+        "completed_warp_frame_ms": [
+          23.349798,
+          22.612281000000003,
+          22.968099,
+          22.75377,
+          25.784459,
+          21.559275,
+          25.022461,
+          22.316352000000002,
+          23.244788
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.206479,
+          0.305249,
+          0.27291899999999997,
+          0.19986,
+          0.20643899999999998,
+          0.276419,
+          0.31858899999999996,
+          0.219089,
+          0.18709900000000002
+        ],
+        "warp_ms": [
+          0.315199,
+          0.32852899999999996,
+          0.352928,
+          0.26603899999999997,
+          0.298379,
+          0.225369,
+          0.270259,
+          0.300449,
+          0.260849
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          8.572856999999999,
+          7.077732,
+          8.350707,
+          7.699359,
+          6.4198450000000005,
+          7.087782,
+          9.601302,
+          9.568443,
+          10.232279
+        ],
+        "completed_warp_frame_ms": [
+          22.248392,
+          21.395775999999998,
+          22.903429,
+          21.663365,
+          23.906056,
+          20.857468,
+          22.335212,
+          20.710938000000002,
+          20.40633
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.18912,
+          0.251919,
+          0.214659,
+          0.214069,
+          0.17789999999999997,
+          0.206179,
+          0.239419,
+          0.270379,
+          0.203089
+        ],
+        "warp_ms": [
+          0.23757899999999998,
+          0.334489,
+          0.278659,
+          0.24917899999999998,
+          0.27458899999999997,
+          0.381619,
+          0.214089,
+          0.32354900000000003,
+          0.23296
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 3,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.746097000000001,
+          6.034086,
+          4.090094,
+          4.1738729999999995,
+          6.384085000000001,
+          5.03976,
+          5.4015390000000005,
+          6.325615,
+          4.97968
+        ],
+        "completed_warp_frame_ms": [
+          8.960365,
+          7.067822,
+          7.420111,
+          9.744611,
+          7.51515,
+          8.001379,
+          7.709509,
+          7.747730000000001,
+          7.721379
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.222099,
+          0.201549,
+          0.213729,
+          0.19738899999999998,
+          0.21139,
+          0.277209,
+          0.27276900000000004,
+          0.305879,
+          0.18321900000000002
+        ],
+        "warp_ms": [
+          1.6115140000000001,
+          1.4396339999999999,
+          1.4406340000000002,
+          1.474564,
+          1.494794,
+          1.504774,
+          1.593414,
+          1.548254,
+          1.519134
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          7.1028519999999995,
+          7.807869999999999,
+          7.935747999999999,
+          7.0188619999999995,
+          6.714904,
+          7.6312999999999995,
+          8.309847,
+          7.50121,
+          6.731123999999999
+        ],
+        "completed_warp_frame_ms": [
+          21.483515,
+          24.035214999999997,
+          22.184793000000003,
+          25.245639999999998,
+          22.549491,
+          26.478776,
+          26.728174,
+          21.269936,
+          22.061853
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.23944,
+          0.316779,
+          0.22639900000000002,
+          0.191979,
+          0.19075999999999999,
+          0.254799,
+          0.211999,
+          0.212149,
+          0.17518
+        ],
+        "warp_ms": [
+          0.279139,
+          0.285869,
+          0.26947899999999997,
+          0.25115899999999997,
+          0.456108,
+          0.401059,
+          0.474018,
+          0.222819,
+          0.306649
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          6.479534999999999,
+          7.628569,
+          7.63637,
+          7.429201,
+          7.958828,
+          7.7202,
+          7.148572,
+          6.494334,
+          8.525216
+        ],
+        "completed_warp_frame_ms": [
+          23.013229,
+          22.186572,
+          22.126053,
+          24.966951,
+          23.640697,
+          20.725748,
+          25.057972000000003,
+          23.699256,
+          19.405922999999998
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.267679,
+          0.298548,
+          0.24791899999999997,
+          0.242299,
+          0.267529,
+          0.284309,
+          0.22592900000000002,
+          0.196869,
+          0.199689
+        ],
+        "warp_ms": [
+          0.235289,
+          0.240369,
+          0.317009,
+          0.33370900000000003,
+          0.24303899999999998,
+          0.275509,
+          0.256499,
+          0.24794900000000003,
+          0.214109
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 4,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          9.954461,
+          4.7941210000000005,
+          6.338744999999999,
+          5.528029,
+          5.535398000000001,
+          4.157813,
+          6.829853,
+          8.478717,
+          4.640762
+        ],
+        "completed_warp_frame_ms": [
+          7.63975,
+          7.5816110000000005,
+          8.490986000000001,
+          7.961879,
+          7.377451,
+          7.815459000000001,
+          7.594519,
+          8.163948000000001,
+          7.8399
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.24491999999999997,
+          0.19171999999999997,
+          0.20085,
+          0.219919,
+          0.189449,
+          0.204459,
+          0.19186,
+          0.18652,
+          0.261169
+        ],
+        "warp_ms": [
+          1.503995,
+          1.393295,
+          1.483953,
+          1.690773,
+          1.5511430000000002,
+          1.559903,
+          1.4509340000000002,
+          1.6086239999999998,
+          1.598784
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          7.240451,
+          7.5073,
+          6.626794,
+          6.611124,
+          7.5188299999999995,
+          7.84552,
+          8.589696,
+          11.056926,
+          8.553636
+        ],
+        "completed_warp_frame_ms": [
+          26.255186,
+          23.394248,
+          22.483671,
+          24.641413,
+          22.70185,
+          21.976814,
+          23.611925999999997,
+          22.89931,
+          24.260424
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.359608,
+          0.297819,
+          0.19998,
+          0.15911,
+          0.22151,
+          0.292519,
+          0.20665899999999998,
+          0.196159,
+          0.253899
+        ],
+        "warp_ms": [
+          0.306199,
+          0.221019,
+          0.338829,
+          0.270549,
+          0.31521899999999997,
+          0.21908999999999998,
+          0.392988,
+          0.260139,
+          0.737977
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          7.9814989999999995,
+          6.789703,
+          8.715046000000001,
+          7.205490999999999,
+          6.6019440000000005,
+          8.146188,
+          7.844459,
+          7.160962,
+          7.320901
+        ],
+        "completed_warp_frame_ms": [
+          26.846183999999997,
+          26.263747000000002,
+          22.035472,
+          22.96725,
+          23.043839,
+          23.870255,
+          20.777809,
+          21.777452999999998,
+          23.699397
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.200749,
+          0.208089,
+          0.280569,
+          0.221159,
+          0.314139,
+          0.18551900000000002,
+          0.23180900000000002,
+          0.237899,
+          0.326378
+        ],
+        "warp_ms": [
+          0.405568,
+          0.371649,
+          0.329658,
+          0.22111,
+          0.254379,
+          0.327899,
+          0.239289,
+          0.314748,
+          0.345039
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 4,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.917267000000001,
+          4.624071000000001,
+          4.148823999999999,
+          4.5484219999999995,
+          4.038884,
+          5.8297669999999995,
+          5.851557000000001,
+          4.638191,
+          5.134040000000001
+        ],
+        "completed_warp_frame_ms": [
+          9.053024,
+          9.740372,
+          7.902809,
+          7.164402,
+          8.052358,
+          7.992808,
+          7.9883690000000005,
+          7.926387999999999,
+          8.195808000000001
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.29201900000000003,
+          0.21162899999999998,
+          0.194589,
+          0.139619,
+          0.158839,
+          0.193329,
+          0.28868900000000003,
+          0.189149,
+          0.1986
+        ],
+        "warp_ms": [
+          1.394425,
+          2.410581,
+          1.521504,
+          1.4610940000000001,
+          1.543343,
+          1.507264,
+          1.5453839999999999,
+          1.4683140000000001,
+          1.506124
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          6.319565,
+          7.236672,
+          8.369266,
+          7.502281,
+          6.748513,
+          7.55497,
+          10.610918999999999,
+          7.071321999999999,
+          6.762583
+        ],
+        "completed_warp_frame_ms": [
+          23.957895999999998,
+          22.521901,
+          23.166038999999998,
+          22.56691,
+          22.76275,
+          24.674393,
+          28.887186,
+          21.753004,
+          22.71565
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.211189,
+          0.179949,
+          0.26164899999999996,
+          0.20831,
+          0.202409,
+          0.16548,
+          0.19774,
+          0.20749900000000002,
+          0.21163900000000002
+        ],
+        "warp_ms": [
+          0.331569,
+          0.317519,
+          0.344928,
+          0.237969,
+          0.321379,
+          0.30821899999999997,
+          0.24140899999999998,
+          0.26048899999999997,
+          0.281059
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          7.125071999999999,
+          6.577614,
+          9.289194,
+          7.391771,
+          6.658654,
+          7.73677,
+          7.210631,
+          7.442581000000001,
+          8.102088
+        ],
+        "completed_warp_frame_ms": [
+          22.251231999999998,
+          24.064715,
+          23.465436999999998,
+          25.839028,
+          21.891484,
+          21.208636,
+          23.139209,
+          24.577823,
+          21.417894999999998
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.322439,
+          0.20678,
+          0.13139,
+          0.246549,
+          0.291009,
+          0.283689,
+          0.189159,
+          0.199459,
+          0.219919
+        ],
+        "warp_ms": [
+          0.26602899999999996,
+          0.269339,
+          0.26719899999999996,
+          0.24247,
+          0.229009,
+          0.230479,
+          0.28373899999999996,
+          0.214989,
+          0.24268900000000002
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 5,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.081880000000001,
+          4.280113,
+          4.137614,
+          4.543972,
+          6.745443,
+          7.56881,
+          4.171664000000001,
+          4.376543,
+          6.157735
+        ],
+        "completed_warp_frame_ms": [
+          8.867735,
+          7.842429,
+          7.4523209999999995,
+          9.125064,
+          8.504016,
+          7.5424999999999995,
+          7.62598,
+          10.109681,
+          7.985048999999999
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.233769,
+          0.207369,
+          0.215099,
+          0.197429,
+          0.294268,
+          0.218579,
+          0.20496899999999998,
+          0.203859,
+          0.19023900000000002
+        ],
+        "warp_ms": [
+          2.022842,
+          1.813583,
+          1.745274,
+          1.754553,
+          1.944232,
+          1.859183,
+          1.7942539999999998,
+          1.9137430000000002,
+          1.840403
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          8.476536,
+          8.550577,
+          8.702525,
+          9.420113,
+          8.224488000000001,
+          9.032274,
+          6.400735,
+          8.415936,
+          9.618063
+        ],
+        "completed_warp_frame_ms": [
+          22.75307,
+          20.29325,
+          22.957999,
+          27.242302,
+          29.534924,
+          22.574451,
+          22.040852,
+          22.686821,
+          23.013849
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.258449,
+          0.23875,
+          0.195599,
+          0.19068000000000002,
+          0.24508899999999997,
+          0.229079,
+          0.158829,
+          0.20771900000000001,
+          0.260249
+        ],
+        "warp_ms": [
+          0.298459,
+          0.235799,
+          0.30136799999999997,
+          0.338489,
+          0.261949,
+          0.223959,
+          0.30298800000000004,
+          0.38121900000000003,
+          0.245889
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          8.717116,
+          8.251897,
+          8.826985,
+          5.951817,
+          6.585574,
+          9.456752,
+          7.130891999999999,
+          8.126148,
+          6.873413
+        ],
+        "completed_warp_frame_ms": [
+          19.712802,
+          25.966388,
+          21.742243000000002,
+          20.764858,
+          21.662055,
+          23.632097,
+          22.61834,
+          21.181817,
+          22.195052
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.210379,
+          0.265389,
+          0.254199,
+          0.19981,
+          0.19442900000000002,
+          0.207619,
+          0.30918900000000005,
+          0.312679,
+          0.14547
+        ],
+        "warp_ms": [
+          0.23224899999999998,
+          0.30395900000000003,
+          0.286438,
+          0.241669,
+          0.33690899999999996,
+          0.270919,
+          0.22953900000000002,
+          0.318179,
+          0.230729
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "integer",
+    "run": 5,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.507821000000001,
+          4.884191,
+          4.4305129999999995,
+          4.364403,
+          4.98999,
+          4.361593,
+          4.157593,
+          4.2371229999999995,
+          4.239814
+        ],
+        "completed_warp_frame_ms": [
+          8.276327,
+          7.091722,
+          7.046392,
+          9.183014,
+          8.334757,
+          7.089322,
+          7.297950999999999,
+          9.071314000000001,
+          7.952618999999999
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.202849,
+          0.27295899999999995,
+          0.239199,
+          0.30444899999999997,
+          0.198409,
+          0.218149,
+          0.196249,
+          0.183919,
+          0.19091
+        ],
+        "warp_ms": [
+          1.548073,
+          1.487984,
+          1.465804,
+          1.550154,
+          1.614744,
+          1.5274640000000002,
+          1.458244,
+          1.5576839999999998,
+          1.626794
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          7.639979,
+          6.845513,
+          6.520974,
+          6.213326,
+          7.53165,
+          7.222002,
+          8.034998,
+          6.954493,
+          7.598329
+        ],
+        "completed_warp_frame_ms": [
+          23.486387,
+          27.591880999999997,
+          27.918519999999997,
+          26.326755,
+          26.366736000000003,
+          25.069430999999998,
+          27.653331,
+          23.803166,
+          23.535597
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.276528,
+          0.197359,
+          0.17238,
+          0.16112,
+          0.144559,
+          0.31338900000000003,
+          0.242139,
+          0.204669,
+          0.244559
+        ],
+        "warp_ms": [
+          0.214759,
+          0.302428,
+          0.340588,
+          0.282038,
+          0.32576900000000003,
+          0.375529,
+          0.444628,
+          0.361138,
+          0.461938
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          6.749893,
+          8.632406,
+          5.825197,
+          8.555646,
+          8.710656,
+          8.298757,
+          11.361275000000001,
+          6.688484,
+          11.369105
+        ],
+        "completed_warp_frame_ms": [
+          23.884916,
+          23.238097999999997,
+          22.921378999999998,
+          22.235053,
+          26.138855999999997,
+          23.071179,
+          26.170687,
+          22.75058,
+          24.428643
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.269549,
+          0.24500900000000003,
+          0.192079,
+          0.215899,
+          0.20436,
+          0.337378,
+          0.276129,
+          0.298579,
+          0.216219
+        ],
+        "warp_ms": [
+          0.300439,
+          0.33419899999999997,
+          0.284769,
+          0.33974899999999997,
+          0.27730899999999997,
+          0.23884,
+          0.314049,
+          0.35943800000000004,
+          0.231269
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 0,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          6.580494,
+          8.374087000000001,
+          4.857881,
+          5.640397999999999,
+          5.2168589999999995,
+          5.0442,
+          6.169636,
+          4.877651,
+          6.300065
+        ],
+        "completed_warp_frame_ms": [
+          9.366912999999998,
+          8.036368,
+          7.70131,
+          7.717109,
+          7.502759999999999,
+          9.106675,
+          8.379077,
+          7.275951999999999,
+          8.281706999999999
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.35272899999999996,
+          0.25716900000000004,
+          0.252309,
+          0.254199,
+          0.230039,
+          0.255479,
+          0.262949,
+          0.24972900000000003,
+          0.210689
+        ],
+        "warp_ms": [
+          1.423054,
+          1.605134,
+          1.641254,
+          1.474744,
+          1.484944,
+          1.5564349999999998,
+          1.559304,
+          1.5213539999999999,
+          1.4806540000000001
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          20.608928,
+          21.137687,
+          20.822457999999997,
+          19.319493,
+          20.184141,
+          22.244932,
+          21.260556,
+          20.094540000000002,
+          18.531377000000003
+        ],
+        "completed_warp_frame_ms": [
+          21.761194,
+          22.953559,
+          24.290134000000002,
+          23.435018,
+          25.278869999999998,
+          23.908895,
+          24.947152,
+          22.256802,
+          23.379748
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.201029,
+          0.255629,
+          0.290279,
+          0.19226900000000002,
+          0.299689,
+          0.21315900000000002,
+          0.22545900000000002,
+          0.314329,
+          0.1959
+        ],
+        "warp_ms": [
+          0.283379,
+          0.21822899999999998,
+          0.36400899999999997,
+          0.407459,
+          0.227029,
+          0.366738,
+          0.29627899999999996,
+          0.290169,
+          0.216489
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          20.182371,
+          21.677114,
+          19.743392,
+          19.414713,
+          21.082867,
+          20.27892,
+          18.968135,
+          18.945805,
+          18.452647
+        ],
+        "completed_warp_frame_ms": [
+          25.108861,
+          22.83717,
+          23.813315000000003,
+          22.658141,
+          22.501101,
+          23.958986000000003,
+          21.234506,
+          20.369129,
+          20.982777000000002
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.210609,
+          0.209519,
+          0.208899,
+          0.17399900000000001,
+          0.22231900000000002,
+          0.199319,
+          0.156229,
+          0.244449,
+          0.21174900000000002
+        ],
+        "warp_ms": [
+          0.237119,
+          0.221909,
+          0.272229,
+          0.305989,
+          0.22309900000000002,
+          0.34445899999999996,
+          0.290058,
+          0.19955900000000001,
+          0.355279
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 0,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.869597,
+          5.937755999999999,
+          5.322359,
+          5.351209,
+          5.10914,
+          5.333389,
+          5.811547,
+          4.873771,
+          4.779651
+        ],
+        "completed_warp_frame_ms": [
+          7.933348,
+          8.195778,
+          7.53702,
+          7.225871,
+          8.765626000000001,
+          7.60889,
+          8.574556000000001,
+          6.887433,
+          7.039192
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.330459,
+          0.238669,
+          0.22467,
+          0.220649,
+          0.20965999999999999,
+          0.271109,
+          0.259939,
+          0.264229,
+          0.198159
+        ],
+        "warp_ms": [
+          1.443094,
+          1.620424,
+          1.641333,
+          1.479954,
+          1.431535,
+          1.517194,
+          1.637383,
+          1.477344,
+          1.398794
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          22.96794,
+          24.845312,
+          24.166964,
+          22.337282,
+          25.857888,
+          26.999053,
+          23.849705999999998,
+          21.622004,
+          25.28431
+        ],
+        "completed_warp_frame_ms": [
+          25.990398000000003,
+          20.905067,
+          21.696324,
+          24.171885,
+          19.846041,
+          21.614825,
+          22.934709,
+          21.930843,
+          21.045767
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.460329,
+          0.23717899999999997,
+          0.217999,
+          0.20868899999999999,
+          0.275959,
+          0.230859,
+          0.242749,
+          0.197789,
+          0.32321900000000003
+        ],
+        "warp_ms": [
+          0.230079,
+          0.218809,
+          0.313869,
+          0.232149,
+          0.246019,
+          0.28279899999999997,
+          0.24418900000000002,
+          0.251409,
+          0.382299
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          25.034741999999998,
+          25.643368,
+          21.199846,
+          22.89587,
+          20.980237,
+          22.360920999999998,
+          23.957546,
+          23.071399,
+          26.305096
+        ],
+        "completed_warp_frame_ms": [
+          22.354902,
+          24.641123,
+          23.115468,
+          21.151137000000002,
+          24.252954,
+          22.499741,
+          22.151652000000002,
+          22.051683,
+          20.20252
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.306089,
+          0.205359,
+          0.183339,
+          0.24368900000000002,
+          0.268569,
+          0.23204899999999998,
+          0.25611900000000004,
+          0.276289,
+          0.225889
+        ],
+        "warp_ms": [
+          0.356189,
+          0.273949,
+          0.219309,
+          1.130016,
+          0.241979,
+          0.250419,
+          0.265269,
+          0.30886899999999995,
+          0.222559
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 1,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.504697999999999,
+          4.485822000000001,
+          5.659038,
+          4.369783,
+          5.093109999999999,
+          5.113809000000001,
+          4.278513,
+          5.16217,
+          5.409309
+        ],
+        "completed_warp_frame_ms": [
+          8.633536000000001,
+          8.349347,
+          6.721323000000001,
+          8.563846,
+          7.585561,
+          8.609175,
+          7.137252,
+          7.820359000000001,
+          9.805750999999999
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.214989,
+          0.224649,
+          0.233669,
+          0.212629,
+          0.244419,
+          0.188579,
+          0.18439,
+          0.21760000000000002,
+          0.220199
+        ],
+        "warp_ms": [
+          1.519534,
+          1.5556940000000001,
+          1.426334,
+          1.664504,
+          1.5592139999999999,
+          1.543123,
+          1.5019250000000002,
+          1.486404,
+          1.425585
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          23.769846,
+          28.453207000000003,
+          23.048319000000003,
+          23.208448,
+          21.991243,
+          23.931686,
+          24.867912,
+          27.68791,
+          25.27668
+        ],
+        "completed_warp_frame_ms": [
+          22.259013,
+          23.440997000000003,
+          24.787712,
+          23.688486,
+          22.70318,
+          23.267959,
+          23.966155,
+          21.059486,
+          22.839290000000002
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.258559,
+          0.149369,
+          0.223279,
+          0.22090900000000002,
+          0.30123900000000003,
+          0.235249,
+          0.314909,
+          0.270768,
+          0.745267
+        ],
+        "warp_ms": [
+          0.270299,
+          0.336638,
+          0.23277899999999999,
+          0.34055799999999997,
+          0.381259,
+          0.258459,
+          0.217949,
+          0.369928,
+          0.255269
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          23.215198,
+          23.035389,
+          26.045207,
+          23.912955999999998,
+          26.218246,
+          20.439149,
+          22.012243,
+          22.120063,
+          23.069719
+        ],
+        "completed_warp_frame_ms": [
+          20.772318000000002,
+          20.877447,
+          25.122151,
+          19.853411,
+          23.971016000000002,
+          19.495433,
+          24.513663,
+          20.007211,
+          21.760874
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.227899,
+          0.278379,
+          0.292599,
+          0.231239,
+          0.15467899999999998,
+          0.208599,
+          0.30193899999999996,
+          0.196049,
+          0.284539
+        ],
+        "warp_ms": [
+          0.28647900000000004,
+          0.34111800000000003,
+          0.322619,
+          0.27170900000000003,
+          0.303149,
+          0.346899,
+          0.174239,
+          0.460808,
+          0.268679
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 1,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.268959,
+          5.459459,
+          6.378324999999999,
+          4.93313,
+          5.632548,
+          4.420202,
+          4.472513,
+          6.285375,
+          3.935824
+        ],
+        "completed_warp_frame_ms": [
+          8.032709,
+          7.808789,
+          7.729279,
+          9.431702999999999,
+          8.863305,
+          8.232066999999999,
+          7.233112,
+          7.0990020000000005,
+          8.003908000000001
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.282909,
+          0.188749,
+          0.163969,
+          0.196019,
+          0.25187899999999996,
+          0.278489,
+          0.19680899999999998,
+          0.233659,
+          0.199669
+        ],
+        "warp_ms": [
+          1.4523050000000002,
+          1.547503,
+          1.9719820000000001,
+          1.4131250000000002,
+          1.538284,
+          1.684623,
+          1.498474,
+          1.434814,
+          1.4493340000000001
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          19.967971000000002,
+          21.042206,
+          20.019980999999998,
+          19.655133000000003,
+          20.398948999999998,
+          20.466869,
+          20.299419999999998,
+          20.873807000000003,
+          19.363514
+        ],
+        "completed_warp_frame_ms": [
+          24.842362,
+          25.643598,
+          26.212757,
+          24.446413,
+          26.707774,
+          26.365356,
+          25.35855,
+          20.567968999999998,
+          23.600535999999998
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.208359,
+          0.193929,
+          0.28601899999999997,
+          0.205509,
+          0.281348,
+          0.212779,
+          0.29954899999999995,
+          0.185789,
+          0.207699
+        ],
+        "warp_ms": [
+          0.276089,
+          0.218979,
+          0.363589,
+          0.32884800000000003,
+          0.311369,
+          0.235679,
+          0.235279,
+          0.354369,
+          0.30832800000000005
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          20.28255,
+          19.189954,
+          20.113039999999998,
+          21.087187,
+          18.517507,
+          20.363309,
+          20.28495,
+          21.816433999999997,
+          18.208427999999998
+        ],
+        "completed_warp_frame_ms": [
+          23.010809000000002,
+          23.059328999999998,
+          28.171938,
+          25.544159,
+          22.204983000000002,
+          22.143822,
+          21.081167,
+          22.879579,
+          23.217418
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.309209,
+          0.196559,
+          0.274889,
+          0.20614,
+          0.214529,
+          0.304539,
+          0.235069,
+          0.349869,
+          0.210219
+        ],
+        "warp_ms": [
+          0.42693800000000004,
+          0.261679,
+          0.253529,
+          0.298489,
+          0.31848899999999997,
+          0.245318,
+          0.298509,
+          0.358448,
+          0.236479
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 2,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          6.480854,
+          6.2625459999999995,
+          4.683581,
+          4.577902,
+          5.10067,
+          4.746611000000001,
+          4.740870999999999,
+          5.4445689999999995,
+          4.669462
+        ],
+        "completed_warp_frame_ms": [
+          7.56574,
+          8.252257,
+          8.777065,
+          9.103375,
+          8.834645,
+          10.201569000000001,
+          8.594526,
+          7.1406220000000005,
+          8.048258
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.300829,
+          0.24079,
+          0.219889,
+          0.20371899999999998,
+          0.210709,
+          0.168299,
+          0.22278900000000001,
+          0.22344,
+          0.282879
+        ],
+        "warp_ms": [
+          1.6235030000000001,
+          1.517894,
+          1.674964,
+          1.661884,
+          1.449054,
+          2.34958,
+          2.3768309999999997,
+          1.468505,
+          1.4347839999999998
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          21.011737,
+          19.915440999999998,
+          21.505375,
+          23.438498,
+          21.407265000000002,
+          24.068915,
+          21.763964,
+          21.063027,
+          23.226718
+        ],
+        "completed_warp_frame_ms": [
+          23.234768,
+          23.637857,
+          23.850045,
+          21.388126,
+          23.923955,
+          24.270004,
+          22.112652999999998,
+          22.418651,
+          22.996069000000002
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.224299,
+          0.28906899999999996,
+          0.20468,
+          0.295539,
+          0.301489,
+          0.315639,
+          0.215969,
+          0.274169,
+          0.28270900000000004
+        ],
+        "warp_ms": [
+          0.268589,
+          0.342889,
+          0.294318,
+          0.277739,
+          0.354939,
+          0.32769899999999996,
+          0.325889,
+          0.261239,
+          0.20771900000000001
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          19.753401,
+          24.761313,
+          19.692542,
+          20.280469,
+          20.960638,
+          21.992793,
+          20.502209,
+          20.807057,
+          20.323890000000002
+        ],
+        "completed_warp_frame_ms": [
+          19.493933000000002,
+          24.027245,
+          23.611996,
+          23.483027,
+          21.794894,
+          24.296174,
+          22.007253000000002,
+          21.599923999999998,
+          22.596461
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.204009,
+          0.281059,
+          0.262818,
+          0.188049,
+          0.22038,
+          0.222669,
+          0.241899,
+          0.347308,
+          0.21559899999999999
+        ],
+        "warp_ms": [
+          0.320309,
+          0.26050900000000005,
+          0.229569,
+          0.438668,
+          0.32875899999999997,
+          0.23884899999999998,
+          0.232499,
+          0.24822899999999998,
+          0.22578
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 2,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          8.014268,
+          5.381449,
+          4.681022,
+          4.746290999999999,
+          4.490572,
+          4.399903,
+          4.94787,
+          4.887571,
+          4.364972
+        ],
+        "completed_warp_frame_ms": [
+          6.912892,
+          7.339081,
+          7.53456,
+          8.545837,
+          7.998577999999999,
+          8.013157999999999,
+          8.657406,
+          7.8750290000000005,
+          8.352867
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.28374900000000003,
+          0.276519,
+          0.277079,
+          0.21587900000000002,
+          0.210199,
+          0.217029,
+          0.21740900000000002,
+          0.26914899999999997,
+          0.26527799999999996
+        ],
+        "warp_ms": [
+          1.495644,
+          1.370545,
+          1.620294,
+          1.881203,
+          1.467734,
+          1.5728140000000002,
+          1.690943,
+          1.578964,
+          1.550484
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          21.432216,
+          23.903405,
+          23.705896,
+          21.369336,
+          25.36506,
+          25.534558999999998,
+          26.169416000000002,
+          21.700784000000002,
+          23.413318
+        ],
+        "completed_warp_frame_ms": [
+          22.348071,
+          21.462985,
+          22.132273,
+          23.749746,
+          21.892753000000003,
+          21.986273,
+          22.057053,
+          24.084945,
+          23.393937
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.213069,
+          0.268839,
+          0.191569,
+          0.21509999999999999,
+          0.313569,
+          0.264659,
+          0.18718900000000002,
+          0.1725,
+          0.30950900000000003
+        ],
+        "warp_ms": [
+          0.220889,
+          0.265369,
+          0.33313899999999996,
+          0.232159,
+          0.285679,
+          0.324509,
+          0.220179,
+          0.29678899999999997,
+          0.397778
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          24.433864,
+          24.844392,
+          21.968822999999997,
+          23.645346,
+          22.025033,
+          23.752316,
+          22.501981,
+          24.998991,
+          21.187757
+        ],
+        "completed_warp_frame_ms": [
+          22.350112,
+          23.737115,
+          22.432632,
+          23.430177,
+          26.283436000000002,
+          23.710935999999997,
+          22.439761999999998,
+          23.241498,
+          20.393829
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.33063899999999996,
+          0.200139,
+          0.31751799999999997,
+          0.223499,
+          0.239359,
+          0.256409,
+          0.34506899999999996,
+          0.210449,
+          0.17971
+        ],
+        "warp_ms": [
+          0.266739,
+          0.234439,
+          0.34081900000000004,
+          0.341858,
+          0.238629,
+          0.232339,
+          0.274099,
+          0.32562800000000003,
+          0.228129
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 3,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.536808,
+          6.660094,
+          4.744061,
+          4.765741,
+          4.472432,
+          4.368593,
+          4.135174,
+          4.273433,
+          5.12148
+        ],
+        "completed_warp_frame_ms": [
+          7.364711000000001,
+          7.855499,
+          9.423723,
+          7.978588,
+          7.961709000000001,
+          7.741999,
+          7.6219,
+          9.667242,
+          7.251791
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.20926899999999998,
+          0.233689,
+          0.257309,
+          0.275409,
+          0.20431,
+          0.20129999999999998,
+          0.200499,
+          0.213709,
+          0.241289
+        ],
+        "warp_ms": [
+          1.527994,
+          1.414925,
+          2.50893,
+          1.518224,
+          1.4711539999999999,
+          1.437484,
+          1.5019639999999999,
+          1.624253,
+          1.520434
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          21.267505999999997,
+          23.995715,
+          22.779130000000002,
+          22.872269,
+          23.601616999999997,
+          23.783276,
+          22.859918999999998,
+          23.062189,
+          21.234856
+        ],
+        "completed_warp_frame_ms": [
+          22.625,
+          25.32756,
+          21.510445,
+          21.686634,
+          24.145515,
+          20.633438,
+          22.209792,
+          22.665441,
+          21.343045
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.263859,
+          0.217289,
+          0.24644899999999997,
+          0.278529,
+          0.22261899999999998,
+          0.223119,
+          0.25787899999999997,
+          0.24345899999999998,
+          0.15091000000000002
+        ],
+        "warp_ms": [
+          0.294889,
+          0.23341900000000002,
+          0.206259,
+          0.341919,
+          0.249559,
+          0.218189,
+          0.232629,
+          0.237709,
+          0.346288
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          23.765876,
+          20.632868,
+          23.538327000000002,
+          25.255831,
+          25.387159,
+          22.478301,
+          21.172666,
+          25.008291,
+          26.116436999999998
+        ],
+        "completed_warp_frame_ms": [
+          24.066135,
+          23.055197999999997,
+          24.714973,
+          22.75133,
+          24.969241,
+          24.074135,
+          24.849221,
+          24.208514,
+          24.654063
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.219649,
+          0.255099,
+          0.19401,
+          0.237829,
+          0.302288,
+          0.237519,
+          0.193339,
+          0.286489,
+          0.261109
+        ],
+        "warp_ms": [
+          0.293738,
+          0.356878,
+          0.289759,
+          0.294138,
+          0.305338,
+          0.239999,
+          0.300478,
+          0.261609,
+          0.278459
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 3,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          7.51953,
+          7.141582,
+          5.405789,
+          5.949796,
+          5.756657,
+          4.199594,
+          4.186163,
+          5.10104,
+          4.684822
+        ],
+        "completed_warp_frame_ms": [
+          8.538946000000001,
+          9.826851,
+          10.05931,
+          8.505527,
+          10.09204,
+          7.344531,
+          8.010988,
+          8.094468,
+          6.945083
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.215149,
+          0.19716,
+          0.1725,
+          0.31096900000000005,
+          0.226679,
+          0.17924,
+          0.193929,
+          0.1893,
+          0.193799
+        ],
+        "warp_ms": [
+          1.566214,
+          1.552564,
+          1.492944,
+          1.481954,
+          1.628283,
+          1.3985239999999999,
+          1.442244,
+          1.614254,
+          1.543284
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          18.559657,
+          22.477180999999998,
+          19.505743,
+          22.354061,
+          21.846124000000003,
+          20.1389,
+          20.524349,
+          18.236228,
+          21.369735000000002
+        ],
+        "completed_warp_frame_ms": [
+          20.637949,
+          24.976031,
+          21.828564,
+          21.830073,
+          22.623811,
+          22.326031,
+          24.513034,
+          20.908597,
+          22.313131
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.210099,
+          0.213869,
+          0.222019,
+          0.23869900000000002,
+          0.20807900000000001,
+          0.214209,
+          0.24482900000000002,
+          0.194869,
+          0.255489
+        ],
+        "warp_ms": [
+          0.21985000000000002,
+          0.295759,
+          0.366289,
+          0.228609,
+          0.257799,
+          0.276609,
+          0.23382899999999998,
+          0.21807900000000002,
+          0.298809
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          18.951514999999997,
+          19.298794,
+          21.761464,
+          20.821498000000002,
+          19.908001000000002,
+          19.815600999999997,
+          19.421883,
+          21.334566,
+          21.220746
+        ],
+        "completed_warp_frame_ms": [
+          22.514861,
+          24.945551,
+          23.685406999999998,
+          23.580786,
+          21.645415,
+          21.323375,
+          19.736252,
+          21.016117,
+          23.729936
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.279409,
+          0.32049900000000003,
+          0.261189,
+          0.20807900000000001,
+          0.288088,
+          0.278389,
+          0.18115,
+          0.302879,
+          0.193169
+        ],
+        "warp_ms": [
+          0.353649,
+          0.250699,
+          0.266439,
+          0.345308,
+          0.27736900000000003,
+          0.244869,
+          0.342049,
+          0.217269,
+          0.309769
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 4,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.677471,
+          6.151226,
+          5.183879,
+          4.972891,
+          5.769407,
+          4.822991,
+          4.211203,
+          4.191454,
+          4.0672440000000005
+        ],
+        "completed_warp_frame_ms": [
+          7.871529000000001,
+          7.199441,
+          6.521975,
+          7.727989,
+          7.785809,
+          7.331551,
+          6.819053,
+          8.790735,
+          8.586336
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.304808,
+          0.194929,
+          0.20902900000000002,
+          0.251389,
+          0.283458,
+          0.31870899999999996,
+          0.204389,
+          0.187899,
+          0.17205
+        ],
+        "warp_ms": [
+          1.757403,
+          1.5449739999999998,
+          1.418655,
+          1.3666939999999999,
+          1.573084,
+          1.532294,
+          1.439184,
+          1.410015,
+          1.510604
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          21.037577,
+          20.353278999999997,
+          23.481327,
+          20.038121,
+          19.658882,
+          20.34304,
+          18.634316000000002,
+          20.261879999999998,
+          19.800251000000003
+        ],
+        "completed_warp_frame_ms": [
+          21.050816,
+          23.133979,
+          20.820557,
+          25.35681,
+          26.889024000000003,
+          23.399007,
+          20.962397,
+          22.949529,
+          25.38892
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.20110899999999998,
+          0.21598900000000001,
+          0.232399,
+          0.20898,
+          0.314999,
+          0.19714900000000002,
+          0.206469,
+          0.251739,
+          0.191809
+        ],
+        "warp_ms": [
+          0.277619,
+          0.23756,
+          0.225069,
+          0.302539,
+          0.770227,
+          0.22696899999999998,
+          0.259279,
+          0.23926899999999998,
+          0.258099
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          22.967099,
+          20.454048999999998,
+          22.602441000000002,
+          21.528285,
+          20.534018,
+          20.058691,
+          21.215436,
+          20.444398999999997,
+          20.36781
+        ],
+        "completed_warp_frame_ms": [
+          19.916950999999997,
+          22.68058,
+          19.566103000000002,
+          21.594444,
+          23.963885,
+          24.402554,
+          23.433367,
+          22.792900000000003,
+          23.952175
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.208319,
+          0.295979,
+          0.280329,
+          0.20837899999999998,
+          0.310038,
+          0.26416900000000004,
+          0.16921899999999998,
+          0.237659,
+          0.31694900000000004
+        ],
+        "warp_ms": [
+          0.346688,
+          0.363008,
+          0.231369,
+          0.313139,
+          0.231169,
+          0.335079,
+          0.368578,
+          0.301049,
+          0.240769
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 4,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          5.801686999999999,
+          5.14419,
+          4.793411,
+          5.423888,
+          4.670872,
+          7.046322,
+          4.646581,
+          4.415713,
+          5.9618459999999995
+        ],
+        "completed_warp_frame_ms": [
+          8.144678,
+          8.217426999999999,
+          8.331667,
+          8.439947,
+          10.873037,
+          7.768469,
+          7.153482,
+          7.995488,
+          7.64221
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.28208900000000003,
+          0.179039,
+          0.28329899999999997,
+          0.277758,
+          0.283919,
+          0.33556800000000003,
+          0.219799,
+          0.19028,
+          0.26435899999999996
+        ],
+        "warp_ms": [
+          1.4844840000000001,
+          1.661183,
+          1.720573,
+          1.760373,
+          1.631343,
+          1.5128139999999999,
+          1.452554,
+          1.4511640000000001,
+          1.531334
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          23.145857999999997,
+          25.851128000000003,
+          24.273194,
+          23.496807,
+          25.29496,
+          21.892053,
+          20.21969,
+          24.871502,
+          30.25292
+        ],
+        "completed_warp_frame_ms": [
+          23.109988,
+          21.970053,
+          25.36785,
+          23.804676,
+          24.170094,
+          23.410697000000003,
+          24.914232000000002,
+          26.253616,
+          20.375779
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.394538,
+          0.18992,
+          0.219079,
+          0.32289900000000005,
+          0.24447899999999997,
+          0.24501900000000001,
+          0.21736,
+          0.176639,
+          0.28750899999999996
+        ],
+        "warp_ms": [
+          0.235629,
+          0.296079,
+          0.31093899999999997,
+          0.27348900000000004,
+          0.238819,
+          0.279289,
+          0.254909,
+          0.24198899999999998,
+          0.25187899999999996
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          25.134081,
+          26.464595,
+          26.178307,
+          22.55199,
+          22.274962,
+          23.701206,
+          20.774808,
+          21.690504,
+          22.582631
+        ],
+        "completed_warp_frame_ms": [
+          21.142336,
+          22.476901,
+          22.074643000000002,
+          23.623937,
+          20.287519,
+          23.714296,
+          21.850544,
+          20.741848,
+          20.596837999999998
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.24824899999999997,
+          0.537408,
+          0.259939,
+          0.225999,
+          0.303969,
+          0.23588900000000002,
+          0.19435899999999998,
+          0.226469,
+          0.25916900000000004
+        ],
+        "warp_ms": [
+          0.219829,
+          0.320569,
+          0.365749,
+          0.20746900000000001,
+          0.279578,
+          0.238119,
+          0.240869,
+          0.290619,
+          0.240389
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 5,
+    "build": "after",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.745191,
+          6.359945,
+          4.317653,
+          4.385902,
+          4.121504,
+          4.412433,
+          3.892944,
+          4.881281,
+          4.781131
+        ],
+        "completed_warp_frame_ms": [
+          7.124992,
+          6.943713,
+          7.600569,
+          9.057634,
+          7.445051,
+          7.72527,
+          7.752879,
+          8.483236,
+          7.69692
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.204789,
+          0.25234900000000005,
+          0.196299,
+          0.21426900000000002,
+          0.1981,
+          0.182089,
+          0.185729,
+          0.189369,
+          0.24642899999999998
+        ],
+        "warp_ms": [
+          1.524194,
+          1.478134,
+          1.4721840000000002,
+          1.626054,
+          1.566254,
+          1.445275,
+          1.379834,
+          1.6418940000000002,
+          1.452845
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          23.254699,
+          22.869349,
+          22.960859,
+          22.72016,
+          25.933168,
+          22.464771000000002,
+          24.141274,
+          24.054145,
+          22.60619
+        ],
+        "completed_warp_frame_ms": [
+          21.557575,
+          21.070746,
+          21.415615,
+          24.775982,
+          20.29936,
+          22.924609,
+          21.888153,
+          24.104805,
+          22.334592
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.275429,
+          0.205959,
+          0.209259,
+          0.302769,
+          0.23382899999999998,
+          0.23258900000000002,
+          0.326308,
+          0.266229,
+          0.18423899999999999
+        ],
+        "warp_ms": [
+          0.319359,
+          0.233209,
+          0.392449,
+          0.286109,
+          0.242709,
+          0.323679,
+          0.314149,
+          0.22714,
+          0.335069
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          24.771522,
+          23.375077,
+          23.128769000000002,
+          23.181168,
+          22.384951,
+          23.120429,
+          20.924417000000002,
+          23.899875,
+          24.378284
+        ],
+        "completed_warp_frame_ms": [
+          25.26026,
+          21.243855999999997,
+          23.744525999999997,
+          22.576991,
+          21.035116,
+          22.384832,
+          20.074769999999997,
+          20.016931000000003,
+          22.074962
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.211979,
+          0.268119,
+          0.263859,
+          0.199249,
+          0.307359,
+          0.260129,
+          0.197649,
+          0.329299,
+          0.221009
+        ],
+        "warp_ms": [
+          0.251389,
+          0.338699,
+          0.27508900000000003,
+          0.254769,
+          0.33988799999999997,
+          0.314039,
+          0.237549,
+          0.423828,
+          0.25848899999999997
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  },
+  {
+    "mode": "fractional",
+    "run": 5,
+    "build": "before",
+    "rows": [
+      {
+        "case": "composite",
+        "completed_frame_ms": [
+          4.449912,
+          4.306063,
+          5.919385999999999,
+          5.799327,
+          4.886281,
+          4.583182,
+          5.699997,
+          5.408689000000001,
+          5.287209
+        ],
+        "completed_warp_frame_ms": [
+          7.905689000000001,
+          7.731249,
+          6.961142,
+          8.686076,
+          8.031718,
+          7.5581700000000005,
+          6.913563,
+          6.817552999999999,
+          8.477676
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.214229,
+          0.184859,
+          0.16375900000000002,
+          0.205509,
+          0.239379,
+          0.199029,
+          0.262109,
+          0.197889,
+          0.197059
+        ],
+        "warp_ms": [
+          1.6162539999999999,
+          1.500674,
+          1.403245,
+          1.481735,
+          1.529614,
+          1.5482040000000001,
+          1.438895,
+          1.476914,
+          1.524494
+        ]
+      },
+      {
+        "case": "red-all-visible",
+        "completed_frame_ms": [
+          20.505359000000002,
+          21.692594,
+          20.351019,
+          26.645205,
+          22.857829,
+          24.490372999999998,
+          21.828794,
+          26.358525,
+          24.015645
+        ],
+        "completed_warp_frame_ms": [
+          27.680921,
+          28.606976999999997,
+          28.905565000000003,
+          28.373067,
+          25.113701,
+          29.562063,
+          33.147519,
+          30.427519,
+          26.212256
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.24802899999999997,
+          0.23815899999999998,
+          0.242749,
+          0.25244900000000003,
+          0.185679,
+          0.31314899999999996,
+          0.34662899999999996,
+          0.188599,
+          0.259919
+        ],
+        "warp_ms": [
+          0.462209,
+          0.258459,
+          0.246489,
+          0.254469,
+          0.325429,
+          0.303879,
+          0.392459,
+          0.397448,
+          0.7840670000000001
+        ]
+      },
+      {
+        "case": "red-only",
+        "completed_frame_ms": [
+          19.182624,
+          20.716528,
+          20.222830000000002,
+          21.705034,
+          19.663852,
+          17.447731,
+          19.991480999999997,
+          21.420015,
+          24.115115
+        ],
+        "completed_warp_frame_ms": [
+          25.576119000000002,
+          21.497305,
+          24.715932,
+          28.512857,
+          23.414147,
+          19.739452,
+          24.146684,
+          21.864234,
+          24.624982
+        ],
+        "cpu": false,
+        "geometry_ms": [
+          0.328029,
+          0.219469,
+          0.284149,
+          0.201399,
+          0.256249,
+          0.21531,
+          0.199009,
+          0.253849,
+          0.240939
+        ],
+        "warp_ms": [
+          0.26554900000000004,
+          0.251019,
+          0.255849,
+          0.255209,
+          0.24524900000000002,
+          0.249119,
+          0.274339,
+          0.285129,
+          0.316868
+        ]
+      }
+    ],
+    "adapter": "adapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=composite; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-all-visible; CPU fallback=false\nadapter: AdapterInfo { name: \"llvmpipe (LLVM 21.1.8, 256 bits)\", vendor: 65541, device: 0, device_type: Cpu, device_pci_bus_id: \"\", driver: \"llvmpipe\", driver_info: \"Mesa 26.0.8-1ubuntu0.3 (LLVM 21.1.8)\", backend: Vulkan, subgroup_min_size: 8, subgroup_max_size: 8, transient_saves_memory: Some(false), limit_bucket: None }; case=red-only; CPU fallback=false",
+    "other_renderers_before": 0,
+    "other_renderers_after": 0
+  }
+]

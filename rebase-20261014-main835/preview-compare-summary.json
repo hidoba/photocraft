@@ -1,0 +1,388 @@
+{
+  "before": "ddba4761e79cfcf423f6c967edd25112e7415a45",
+  "after": "217f78a46d14c39b7f67fb631af395157c4ebd5b",
+  "base": "835f33a476cba54657132f79089b1ada20b8d6b8",
+  "fixture": "6000x4000 RGBA8 synthetic; default 1.5 MP proxy; 1000x700 offscreen frames and readback; warmed dragging excludes initial capture/upload and commit",
+  "build": "Rust 1.99.0 release; thin LTO; one codegen unit",
+  "adapter_scope": "llvmpipe Vulkan software adapter; these are not new NVIDIA measurements",
+  "other_renderer_overlap_detected": false,
+  "runs_per_build_per_mode": 6,
+  "binary_sha256": {
+    "before": "e8b46e2ce727df1614d3cbc23faf13e0f56da733412eb44abc354fd3512ecfc5",
+    "after": "cc29c50a57a48f642e2b4d43f4d65e15c389ad626741390fee50fc27045986db"
+  },
+  "workflows": [
+    {
+      "mode": "integer",
+      "case": "composite",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.2189145,
+            "p95_ms": 0.305879
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.20783400000000002,
+            "p95_ms": 0.30132899999999996
+          },
+          "change_ms": -0.011080499999999993,
+          "change_percent": -5.061565131592472
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 4.984835,
+            "p95_ms": 8.478717
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 4.9289505,
+            "p95_ms": 6.876023
+          },
+          "change_ms": -0.05588450000000034,
+          "change_percent": -1.1210902667791456
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 1.515044,
+            "p95_ms": 1.711154
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 1.530274,
+            "p95_ms": 2.022842
+          },
+          "change_ms": 0.015229999999999855,
+          "change_percent": 1.0052513326345602
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 7.8296545,
+            "p95_ms": 9.744611
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.9905885,
+            "p95_ms": 10.453988
+          },
+          "change_ms": 0.16093400000000013,
+          "change_percent": 2.0554419099846566
+        }
+      }
+    },
+    {
+      "mode": "integer",
+      "case": "red-all-visible",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.22111,
+            "p95_ms": 0.330679
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.229394,
+            "p95_ms": 0.327409
+          },
+          "change_ms": 0.008283999999999986,
+          "change_percent": 3.746551490208483
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 7.7818495,
+            "p95_ms": 11.056926
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 8.4865065,
+            "p95_ms": 12.161612
+          },
+          "change_ms": 0.704657000000001,
+          "change_percent": 9.05513528628381
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.310934,
+            "p95_ms": 0.474018
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.298419,
+            "p95_ms": 0.38121900000000003
+          },
+          "change_ms": -0.012514999999999998,
+          "change_percent": -4.024969929309751
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 23.785881500000002,
+            "p95_ms": 27.918519999999997
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 23.220463000000002,
+            "p95_ms": 33.784087
+          },
+          "change_ms": -0.5654184999999998,
+          "change_percent": -2.3771181236230454
+        }
+      }
+    },
+    {
+      "mode": "integer",
+      "case": "red-only",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.22776400000000002,
+            "p95_ms": 0.333369
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.212049,
+            "p95_ms": 0.322439
+          },
+          "change_ms": -0.015715000000000034,
+          "change_percent": -6.899685639521625
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 7.5613095,
+            "p95_ms": 10.22968
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.59454,
+            "p95_ms": 10.232279
+          },
+          "change_ms": 0.03323050000000016,
+          "change_percent": 0.43948075396200714
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.27317400000000003,
+            "p95_ms": 0.39950800000000003
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.26827900000000005,
+            "p95_ms": 0.37880800000000003
+          },
+          "change_ms": -0.004894999999999983,
+          "change_percent": -1.7918982040750486
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 22.6691005,
+            "p95_ms": 26.170687
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 22.249812,
+            "p95_ms": 26.952274
+          },
+          "change_ms": -0.4192885000000004,
+          "change_percent": -1.8496036046953046
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "composite",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.21468900000000002,
+            "p95_ms": 0.31096900000000005
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.220424,
+            "p95_ms": 0.283919
+          },
+          "change_ms": 0.00573499999999999,
+          "change_percent": 2.6713059355625957
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 5.1424595,
+            "p95_ms": 7.141582
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 4.877526,
+            "p95_ms": 6.660094
+          },
+          "change_ms": -0.2649335000000006,
+          "change_percent": -5.151883062958507
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 1.5196239999999999,
+            "p95_ms": 1.9719820000000001
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 1.518879,
+            "p95_ms": 1.760373
+          },
+          "change_ms": -0.0007449999999997736,
+          "change_percent": -0.049025285202108915
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 8.021353,
+            "p95_ms": 10.05931
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.865264,
+            "p95_ms": 9.667242
+          },
+          "change_ms": -0.1560889999999997,
+          "change_percent": -1.9459186000167272
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "red-all-visible",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.224879,
+            "p95_ms": 0.314999
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.23996399999999998,
+            "p95_ms": 0.394538
+          },
+          "change_ms": 0.015084999999999987,
+          "change_percent": 6.7080518856807325
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 20.715692999999998,
+            "p95_ms": 24.490372999999998
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 23.6537565,
+            "p95_ms": 27.68791
+          },
+          "change_ms": 2.938063500000002,
+          "change_percent": 14.182791278090502
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.280559,
+            "p95_ms": 0.462209
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.261914,
+            "p95_ms": 0.382299
+          },
+          "change_ms": -0.018645000000000023,
+          "change_percent": -6.645660983964163
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 23.87947,
+            "p95_ms": 29.562063
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 22.486535500000002,
+            "p95_ms": 25.36785
+          },
+          "change_ms": -1.392934499999999,
+          "change_percent": -5.8331885087901885
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "red-only",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.228869,
+            "p95_ms": 0.328029
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.24152400000000002,
+            "p95_ms": 0.33063899999999996
+          },
+          "change_ms": 0.012655000000000027,
+          "change_percent": 5.529363959295508
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 20.30442,
+            "p95_ms": 22.967099
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 23.198183,
+            "p95_ms": 26.218246
+          },
+          "change_ms": 2.893763,
+          "change_percent": 14.2518870275536
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.26933399999999996,
+            "p95_ms": 0.368578
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.276774,
+            "p95_ms": 0.423828
+          },
+          "change_ms": 0.007440000000000058,
+          "change_percent": 2.7623694000757704
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 22.8583745,
+            "p95_ms": 25.576119000000002
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 22.4583315,
+            "p95_ms": 25.122151
+          },
+          "change_ms": -0.40004300000000015,
+          "change_percent": -1.75009382228819
+        }
+      }
+    }
+  ]
+}
