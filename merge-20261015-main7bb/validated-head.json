@@ -40,7 +40,8 @@
     "fmt": 0,
     "layers": 0,
     "wasm": 0,
-    "panic-hunt": 0
+    "panic-hunt": 0,
+    "perf-quick": 0
   },
   "gpu_pixel_oracles": {
     "passed": 3,
@@ -69,7 +70,16 @@
     "observations": "Only Green moves in affine, Warp and arrow-nudge previews/commit; Red remains fixed. The outline follows the transform. Hiding Green preserves Warp controls and geometry. One Undo returns the configured five-nudge group to its original (16, 12) pivot without editing document pixels."
   },
   "quick_performance": {
-    "status": "pending"
+    "status": "passed",
+    "adapter": "NVIDIA GeForce RTX 3090 Vulkan",
+    "schema": 1,
+    "mode": "quick",
+    "date": "2026-10-15T00:11:36Z",
+    "commit": "17cccbd0e4191ea43afc7b24d2f80f9b523e5ed5",
+    "dirty": false,
+    "failures": [],
+    "baseline_note": "baseline is from machine class `macos-aarch64-apple-m4-pro-apple-m4-pro`, this is `linux-x86-64-amd-ryzen-7-9700x-8-core-processor-nvidia-geforce-rtx-3090`: regression check skipped",
+    "note": "Quick run: budgets do not apply; stored baseline is a different machine class. No baseline updated. NVIDIA Vulkan; no new 24 MP channel-preview A/B measurement."
   },
   "24mp_measurement_scope": {
     "measured_source": "217f78a46d14c39b7f67fb631af395157c4ebd5b",

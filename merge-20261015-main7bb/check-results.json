@@ -22,5 +22,9 @@
   "panic-hunt": {
     "exit_code": 0,
     "seconds": 127.0
+  },
+  "perf-quick": {
+    "exit_code": 0,
+    "seconds": 681.48
   }
 }

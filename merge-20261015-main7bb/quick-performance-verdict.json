@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "mode": "quick",
+  "date": "2026-10-15T00:11:36Z",
+  "commit": "17cccbd0e4191ea43afc7b24d2f80f9b523e5ed5",
+  "dirty": false,
+  "failures": [],
+  "baseline_note": "baseline is from machine class `macos-aarch64-apple-m4-pro-apple-m4-pro`, this is `linux-x86-64-amd-ryzen-7-9700x-8-core-processor-nvidia-geforce-rtx-3090`: regression check skipped",
+  "note": "Quick run: budgets do not apply; stored baseline is a different machine class. No baseline updated. NVIDIA Vulkan; no new 24 MP channel-preview A/B measurement."
+}
