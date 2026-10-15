@@ -1,0 +1,389 @@
+{
+  "before": "217f78a46d14c39b7f67fb631af395157c4ebd5b",
+  "after": "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+  "base": "5f9190f8cc1a6b6123125ac7ded9ad744c2c1b3f",
+  "fixture": "6000x4000 RGBA8 synthetic; default 1.5 MP proxy; 1000x700 offscreen frames and readback; warmed dragging excludes initial capture/upload and commit",
+  "build": "Rust 1.99.0 release; thin LTO; one codegen unit",
+  "adapter_scope": "llvmpipe Vulkan software adapter; these are not new NVIDIA measurements",
+  "other_renderer_overlap_detected": false,
+  "runs_per_build_per_mode": 6,
+  "binary_sha256": {
+    "before": "cc29c50a57a48f642e2b4d43f4d65e15c389ad626741390fee50fc27045986db",
+    "after": "60b6cef0659267f1c241e8435cab13000a87fea0f925ea5b2f0721e39a4ce889"
+  },
+  "workflows": [
+    {
+      "mode": "integer",
+      "case": "composite",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.21798299999999998,
+            "p95_ms": 0.334067
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.208843,
+            "p95_ms": 0.38766700000000004
+          },
+          "change_ms": -0.009139999999999981,
+          "change_percent": -4.19298752655023
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 4.7253004999999995,
+            "p95_ms": 6.854614
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 4.602021000000001,
+            "p95_ms": 6.955102
+          },
+          "change_ms": -0.12327949999999888,
+          "change_percent": -2.6089240250434687
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 1.523867,
+            "p95_ms": 1.932175
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 1.509997,
+            "p95_ms": 2.008393
+          },
+          "change_ms": -0.013870000000000049,
+          "change_percent": -0.9101844189814523
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 8.155912,
+            "p95_ms": 9.265813
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.7127055,
+            "p95_ms": 10.410683
+          },
+          "change_ms": -0.4432065000000005,
+          "change_percent": -5.434174620814947
+        }
+      }
+    },
+    {
+      "mode": "integer",
+      "case": "red-all-visible",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.233513,
+            "p95_ms": 0.521216
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.21838849999999999,
+            "p95_ms": 0.319828
+          },
+          "change_ms": -0.015124500000000013,
+          "change_percent": -6.476941326607088
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 7.017542000000001,
+            "p95_ms": 9.079804000000001
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.1723004999999995,
+            "p95_ms": 8.675138
+          },
+          "change_ms": 0.1547584999999989,
+          "change_percent": 2.2053092094069138
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.282478,
+            "p95_ms": 0.440876
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2875725,
+            "p95_ms": 0.45395599999999997
+          },
+          "change_ms": 0.005094500000000002,
+          "change_percent": 1.8035032816714924
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 20.9001765,
+            "p95_ms": 26.027953999999998
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 21.573691,
+            "p95_ms": 25.680417000000002
+          },
+          "change_ms": 0.6735144999999996,
+          "change_percent": 3.222530202077478
+        }
+      }
+    },
+    {
+      "mode": "integer",
+      "case": "red-only",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.229773,
+            "p95_ms": 0.350517
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2105785,
+            "p95_ms": 0.303807
+          },
+          "change_ms": -0.019194500000000003,
+          "change_percent": -8.353679501072797
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 6.609490000000001,
+            "p95_ms": 7.778846
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 6.6331050000000005,
+            "p95_ms": 8.262402
+          },
+          "change_ms": 0.023614999999999498,
+          "change_percent": 0.357289291609475
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.272218,
+            "p95_ms": 0.455826
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.267543,
+            "p95_ms": 0.427067
+          },
+          "change_ms": -0.00467500000000004,
+          "change_percent": -1.7173735755901642
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 21.3429225,
+            "p95_ms": 25.593536999999998
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 20.6526735,
+            "p95_ms": 26.124222999999997
+          },
+          "change_ms": -0.6902490000000014,
+          "change_percent": -3.2340884899900724
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "composite",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.21260800000000002,
+            "p95_ms": 0.299858
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2043685,
+            "p95_ms": 0.327567
+          },
+          "change_ms": -0.00823950000000001,
+          "change_percent": -3.8754421282360063
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 4.390324,
+            "p95_ms": 5.649703
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 4.6006415,
+            "p95_ms": 9.294503
+          },
+          "change_ms": 0.21031750000000038,
+          "change_percent": 4.790477878170285
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 1.487922,
+            "p95_ms": 2.041844
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 1.5077525,
+            "p95_ms": 1.9929639999999997
+          },
+          "change_ms": 0.019830500000000084,
+          "change_percent": 1.3327647551417465
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 7.477358,
+            "p95_ms": 9.853078
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 7.7767605,
+            "p95_ms": 10.382964
+          },
+          "change_ms": 0.29940250000000024,
+          "change_percent": 4.0041215092282645
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "red-all-visible",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.251463,
+            "p95_ms": 0.47292599999999996
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2607775,
+            "p95_ms": 0.435706
+          },
+          "change_ms": 0.009314500000000003,
+          "change_percent": 3.7041234694567438
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 22.670132,
+            "p95_ms": 27.850728
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 22.533708500000003,
+            "p95_ms": 25.836596
+          },
+          "change_ms": -0.1364234999999958,
+          "change_percent": -0.6017763813637944
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.28985249999999996,
+            "p95_ms": 0.405717
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2605525,
+            "p95_ms": 0.39884600000000003
+          },
+          "change_ms": -0.029299999999999937,
+          "change_percent": -10.108589713733684
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 21.3754425,
+            "p95_ms": 24.822134
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 21.5950705,
+            "p95_ms": 24.439288
+          },
+          "change_ms": 0.21962800000000016,
+          "change_percent": 1.0274781446044878
+        }
+      }
+    },
+    {
+      "mode": "fractional",
+      "case": "red-only",
+      "metrics": {
+        "geometry_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.2497075,
+            "p95_ms": 0.398047
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.25734250000000003,
+            "p95_ms": 0.338237
+          },
+          "change_ms": 0.007635000000000031,
+          "change_percent": 3.057577365517661
+        },
+        "completed_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 21.824564000000002,
+            "p95_ms": 24.983073
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 21.956758,
+            "p95_ms": 27.151504
+          },
+          "change_ms": 0.13219399999999837,
+          "change_percent": 0.6057119858156046
+        },
+        "warp_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 0.28080299999999997,
+            "p95_ms": 0.500586
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 0.2732375,
+            "p95_ms": 0.370477
+          },
+          "change_ms": -0.007565499999999947,
+          "change_percent": -2.694237597176652
+        },
+        "completed_warp_frame_ms": {
+          "before": {
+            "n": 54,
+            "p50_ms": 21.0213355,
+            "p95_ms": 26.54572
+          },
+          "after": {
+            "n": 54,
+            "p50_ms": 20.969811,
+            "p95_ms": 25.993734
+          },
+          "change_ms": -0.05152449999999931,
+          "change_percent": -0.24510574030846
+        }
+      }
+    }
+  ],
+  "comparison_scope": "Historical measured release 217f78a4 versus current merge, including all intervening upstream changes. This is not an isolated merge delta or a new RTX measurement."
+}

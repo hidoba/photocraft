@@ -1,0 +1,7 @@
+{
+  "head": "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+  "tree": "3b9a71701225ed6ed4aa8fdb053a426723dadc9b",
+  "sha256": "60b6cef0659267f1c241e8435cab13000a87fea0f925ea5b2f0721e39a4ce889",
+  "harness_sha256": "d539eaaabe67dfd3527d9173ceac9d88049e0941906574d92423467f1a9e6e0d",
+  "scope": "Identical harness compared with preserved 217f78a4 release binary across all intervening upstream changes; not an isolated merge delta"
+}

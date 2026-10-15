@@ -1,0 +1,66 @@
+{
+  "gpu-oracles": {
+    "exit_code": 0,
+    "passed": 4,
+    "seconds": 19.68,
+    "adapter": "llvmpipe Vulkan",
+    "scope": "All four native-depth, selection, geometry, eyes and edge GPU oracles; no adapter skips"
+  },
+  "thin-warp": {
+    "exit_code": 0,
+    "scope": "48 cases: 12 forced GPU/CPU comparisons and 36 CPU-coverage fallback cases; 3 native depths, feathered/no selection, factors 1/2, bilinear/bicubic, pixel-centre/eighth-pixel edges"
+  },
+  "fmt": {
+    "exit_code": 0,
+    "seconds": 4.88
+  },
+  "layers": {
+    "exit_code": 0,
+    "seconds": 0.14
+  },
+  "scorecard": {
+    "exit_code": 0,
+    "seconds": 0.23
+  },
+  "clippy": {
+    "exit_code": 0,
+    "seconds": 21.96
+  },
+  "tests": {
+    "exit_code": 0,
+    "seconds": 281.23
+  },
+  "wasm": {
+    "exit_code": 0,
+    "seconds": 11.24
+  },
+  "panic-hunt": {
+    "exit_code": 0,
+    "seconds": 11.39
+  },
+  "release-build": {
+    "exit_code": 0,
+    "seconds": 925.57
+  },
+  "perf-quick": {
+    "exit_code": 0,
+    "seconds": 67.6
+  },
+  "24mp-compare": {
+    "exit_code": 0,
+    "seconds": 36.49
+  },
+  "gpu-oracles-nvidia": {
+    "exit_code": 0,
+    "passed": 4,
+    "adapter": "NVIDIA GeForce RTX 3090 Vulkan",
+    "seconds": 31.33,
+    "head": "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+    "binary_sha256": "32e98cba7e900f11890542773aed90575c18a3c3c891dc8e17c6776e78579200",
+    "scope": "All four native-depth/selection/geometry/visibility oracles after portable outline checks; no adapter skips; shared GPU used for correctness, not timing comparison"
+  },
+  "visual-inspection": {
+    "exit_code": 0,
+    "captures": 11
+  }
+}

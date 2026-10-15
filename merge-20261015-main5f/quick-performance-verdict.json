@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "mode": "quick",
+  "date": "2026-10-15T20:26:16Z",
+  "commit": "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+  "dirty": false,
+  "failures": [],
+  "baseline_note": "baseline is from machine class `macos-aarch64-apple-m4-pro-apple-m4-pro`, this is `linux-x86-64-amd-ryzen-7-9700x-8-core-processor-nvidia-geforce-rtx-3090`: regression check skipped",
+  "note": "Quick budgets do not apply. Stored baseline uses a different machine class. No baseline or budget changed. NVIDIA Vulkan shared with another workload; not a direct preview timing comparison."
+}
