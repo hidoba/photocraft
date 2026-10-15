@@ -1,0 +1,21 @@
+{
+  "source": "17cccbd0e4191ea43afc7b24d2f80f9b523e5ed5",
+  "upstream_main": "7bb10a77591c14bc426155594b904e2b45ab5159",
+  "adapter": "llvmpipe Vulkan GPU canvas",
+  "binary_build": "Built by the full test run at the merge commit; four unrelated failures were reproduced on clean upstream. No production changes since that build.",
+  "binary_sha256": "773a0c5a1c21b9ba8a0b72dd43d2f276bd146545c4008cff5e373a77ed459025",
+  "fixture": "Synthetic 32x24 RGB8 canvas; Red/Green strokes; partial selection; Green targeted with RGB visible; inside drag +3,+2; Warp; hide target; separate five-arrow nudge, geometry undo and commit cases",
+  "captures": [
+    "before.png",
+    "affine.png",
+    "warp.png",
+    "target-hidden.png",
+    "nudge-bundle.png",
+    "nudge-undo.png",
+    "nudge-commit.png"
+  ],
+  "inspection": "passed",
+  "nudge_fixture_pause_ms": 10000,
+  "nudge_clock_note": "The offscreen driver advances a synthetic frame clock between control calls. A configured 10-second pause keeps the five calls in one nudge group; default pause timing is covered by the upstream nudge regressions.",
+  "observations": "Only Green moves in affine, Warp and arrow-nudge previews/commit; Red remains fixed. The outline follows the transform. Hiding Green preserves Warp controls and geometry. One Undo returns the configured five-nudge group to its original (16, 12) pivot without editing document pixels."
+}

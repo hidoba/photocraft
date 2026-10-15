@@ -1,0 +1,14 @@
+{
+  "baseline": "7bb10a77591c14bc426155594b904e2b45ab5159",
+  "includes_pr_changes": false,
+  "tests": {
+    "smart-object-curves": {
+      "exit_code": 101,
+      "seconds": 281.73
+    },
+    "profile-prompts": {
+      "exit_code": 101,
+      "seconds": 0.97
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "date": "2026-10-15",
+  "pr": "https://github.com/storytold/photocraft/pull/4648",
+  "head": "17cccbd0e4191ea43afc7b24d2f80f9b523e5ed5",
+  "tree": "ea1cae1c20e40e382ec9d7f3a10f1c5f8977dd18",
+  "operation": "merge",
+  "parents": [
+    "7d38984407aaa344aeb3c86f00f14798b019b91f",
+    "7bb10a77591c14bc426155594b904e2b45ab5159"
+  ],
+  "upstream_main": "7bb10a77591c14bc426155594b904e2b45ab5159",
+  "history_preserved": true,
+  "toolchain": "Rust 1.99.0",
+  "full_tests": {
+    "passed": 5466,
+    "failed": 4,
+    "ignored": 54,
+    "suites": 89,
+    "exit_code": 101
+  },
+  "known_upstream_failures": {
+    "baseline": "7bb10a77591c14bc426155594b904e2b45ab5159",
+    "includes_pr_changes": false,
+    "tests": [
+      "filter_dialog::tests::smart_object_curves_preview_keeps_its_size_on_a_reduced_proxy",
+      "profile_open_tests::cancel_opens_neither_the_file_nor_the_ones_still_to_come",
+      "profile_open_tests::each_answer_applies_to_its_own_file",
+      "profile_open_tests::files_opened_together_ask_one_at_a_time_before_each_opens"
+    ],
+    "reproduced": true,
+    "notes": [
+      "Profile-prompt tests still expect the previous Photocraft spelling of the renamed PhotoCraft profile.",
+      "The reduced smart-object Curves preview fails the same interior-alpha assertion at (4, 4)."
+    ]
+  },
+  "gate_exit_codes": {
+    "tests": 101,
+    "clippy": 0,
+    "fmt": 0,
+    "layers": 0,
+    "wasm": 0,
+    "panic-hunt": 0
+  },
+  "gpu_pixel_oracles": {
+    "passed": 3,
+    "adapter": "llvmpipe Vulkan",
+    "scope": "Native depths, selections, affine/perspective/Warp, channel eyes, sparse/high-frequency samples and source-edge stretching across destination tiles; untargeted samples preserved"
+  },
+  "visual_verification": {
+    "source": "17cccbd0e4191ea43afc7b24d2f80f9b523e5ed5",
+    "upstream_main": "7bb10a77591c14bc426155594b904e2b45ab5159",
+    "adapter": "llvmpipe Vulkan GPU canvas",
+    "binary_build": "Built by the full test run at the merge commit; four unrelated failures were reproduced on clean upstream. No production changes since that build.",
+    "binary_sha256": "773a0c5a1c21b9ba8a0b72dd43d2f276bd146545c4008cff5e373a77ed459025",
+    "fixture": "Synthetic 32x24 RGB8 canvas; Red/Green strokes; partial selection; Green targeted with RGB visible; inside drag +3,+2; Warp; hide target; separate five-arrow nudge, geometry undo and commit cases",
+    "captures": [
+      "before.png",
+      "affine.png",
+      "warp.png",
+      "target-hidden.png",
+      "nudge-bundle.png",
+      "nudge-undo.png",
+      "nudge-commit.png"
+    ],
+    "inspection": "passed",
+    "nudge_fixture_pause_ms": 10000,
+    "nudge_clock_note": "The offscreen driver advances a synthetic frame clock between control calls. A configured 10-second pause keeps the five calls in one nudge group; default pause timing is covered by the upstream nudge regressions.",
+    "observations": "Only Green moves in affine, Warp and arrow-nudge previews/commit; Red remains fixed. The outline follows the transform. Hiding Green preserves Warp controls and geometry. One Undo returns the configured five-nudge group to its original (16, 12) pivot without editing document pixels."
+  },
+  "quick_performance": {
+    "status": "pending"
+  },
+  "24mp_measurement_scope": {
+    "measured_source": "217f78a46d14c39b7f67fb631af395157c4ebd5b",
+    "note": "Historical software-Vulkan A/B remains scoped to its measured source. The GPU implementation and oracle source are byte-identical at this merge commit; no new direct NVIDIA timing claim.",
+    "summary": "https://raw.githubusercontent.com/hidoba/photocraft/40c6527fc7b5d7ef58ba9dda0217ef00fc3ae8e2/rebase-20261014-main835/preview-compare-summary.json"
+  }
+}
