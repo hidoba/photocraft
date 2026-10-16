@@ -1,0 +1,1541 @@
+{
+  "before": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ]
+  ],
+  "affine": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 15,
+            "y": 12
+          },
+          {
+            "kind": "move",
+            "x": 18,
+            "y": 14
+          },
+          {
+            "kind": "up",
+            "x": 18,
+            "y": 14
+          }
+        ]
+      }
+    ]
+  ],
+  "warp": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 15,
+            "y": 12
+          },
+          {
+            "kind": "move",
+            "x": 18,
+            "y": 14
+          },
+          {
+            "kind": "up",
+            "x": 18,
+            "y": 14
+          }
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.transform.warp"
+      }
+    ]
+  ],
+  "hidden": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 15,
+            "y": 12
+          },
+          {
+            "kind": "move",
+            "x": 18,
+            "y": 14
+          },
+          {
+            "kind": "up",
+            "x": 18,
+            "y": 14
+          }
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.transform.warp"
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "green",
+          "visible": false
+        }
+      }
+    ]
+  ],
+  "nudge-bundle": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.bundleNudges",
+          "value": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.nudgeBundlePauseMs",
+          "value": 10000
+        }
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ]
+  ],
+  "nudge-undo": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.bundleNudges",
+          "value": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.nudgeBundlePauseMs",
+          "value": 10000
+        }
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "Z",
+        "command": true
+      }
+    ]
+  ],
+  "nudge-commit": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 32,
+          "height": 24,
+          "background": "white"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "red"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              16,
+              1
+            ],
+            [
+              20,
+              8,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "paint.stroke",
+        "params": {
+          "points": [
+            [
+              8,
+              8,
+              1
+            ],
+            [
+              20,
+              16,
+              1
+            ]
+          ],
+          "size": 2,
+          "color": "#000000"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 4,
+          "y": 4,
+          "width": 24,
+          "height": 16
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 20,
+        "center": [
+          16,
+          12
+        ]
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.bundleNudges",
+          "value": true
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "prefs.set",
+        "params": {
+          "path": "tools.nudgeBundlePauseMs",
+          "value": 10000
+        }
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowRight"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "ArrowDown"
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "Enter"
+      }
+    ]
+  ],
+  "thin-warp-before": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 128,
+          "height": 128,
+          "background": "black"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 40,
+          "y": 20,
+          "width": 3,
+          "height": 40
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "edit.fill",
+        "params": {
+          "color": "#ffffff"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ]
+  ],
+  "thin-warp-stretch": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 128,
+          "height": 128,
+          "background": "black"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 40,
+          "y": 20,
+          "width": 3,
+          "height": 40
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "edit.fill",
+        "params": {
+          "color": "#ffffff"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 20,
+        "center": [
+          41.5,
+          40
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 43,
+            "y": 40
+          },
+          {
+            "kind": "move",
+            "x": 86.5,
+            "y": 40
+          },
+          {
+            "kind": "up",
+            "x": 86.5,
+            "y": 40
+          }
+        ],
+        "modifiers": {
+          "alt": true,
+          "shift": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ]
+  ],
+  "thin-warp-preview": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 128,
+          "height": 128,
+          "background": "black"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 40,
+          "y": 20,
+          "width": 3,
+          "height": 40
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "edit.fill",
+        "params": {
+          "color": "#ffffff"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 20,
+        "center": [
+          41.5,
+          40
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 43,
+            "y": 40
+          },
+          {
+            "kind": "move",
+            "x": 86.5,
+            "y": 40
+          },
+          {
+            "kind": "up",
+            "x": 86.5,
+            "y": 40
+          }
+        ],
+        "modifiers": {
+          "alt": true,
+          "shift": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.transform.warp"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 41.5,
+            "y": 40
+          },
+          {
+            "kind": "move",
+            "x": 41.5,
+            "y": 70
+          },
+          {
+            "kind": "up",
+            "x": 41.5,
+            "y": 70
+          }
+        ]
+      }
+    ]
+  ],
+  "thin-warp-commit": [
+    [
+      "engine.execute",
+      {
+        "command": "file.new",
+        "params": {
+          "width": 128,
+          "height": 128,
+          "background": "black"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.target",
+        "params": {
+          "channel": "green"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "select.rect",
+        "params": {
+          "x": 40,
+          "y": 20,
+          "width": 3,
+          "height": 40
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "edit.fill",
+        "params": {
+          "color": "#ffffff"
+        }
+      }
+    ],
+    [
+      "engine.execute",
+      {
+        "command": "channel.setVisible",
+        "params": {
+          "channel": "composite",
+          "visible": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "dockTabs": {
+          "layers": 1
+        },
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 20,
+        "center": [
+          41.5,
+          40
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.freeTransform"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 43,
+            "y": 40
+          },
+          {
+            "kind": "move",
+            "x": 86.5,
+            "y": 40
+          },
+          {
+            "kind": "up",
+            "x": 86.5,
+            "y": 40
+          }
+        ],
+        "modifiers": {
+          "alt": true,
+          "shift": true
+        }
+      }
+    ],
+    [
+      "ui.set",
+      {
+        "zoom": 4,
+        "center": [
+          64,
+          64
+        ]
+      }
+    ],
+    [
+      "ui.menu.invoke",
+      {
+        "id": "edit.transform.warp"
+      }
+    ],
+    [
+      "ui.pointer",
+      {
+        "events": [
+          {
+            "kind": "down",
+            "x": 41.5,
+            "y": 40
+          },
+          {
+            "kind": "move",
+            "x": 41.5,
+            "y": 70
+          },
+          {
+            "kind": "up",
+            "x": 41.5,
+            "y": 70
+          }
+        ]
+      }
+    ],
+    [
+      "ui.key",
+      {
+        "key": "Enter"
+      }
+    ]
+  ]
+}

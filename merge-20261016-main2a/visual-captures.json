@@ -1,0 +1,38 @@
+{
+  "source": "71391d865406c581def37981126502572d607e6c",
+  "upstream_main": "2a952f164c0b4cf936b1c6497db10dd095341c00",
+  "adapter": "llvmpipe Vulkan GPU canvas",
+  "binary_build": "Built from current merge source with cargo build --example snapshot; tracked source clean",
+  "binary_sha256": "54b3a4e60a69f4950904b58e3f3942cfd59a9da6f27b9eda7ca9a13e9bd977ea",
+  "fixture": "Synthetic RGB8; partial selected Green with Red fixed; affine, Warp, eyes and grouped nudges; selected 3px Green column stretched 30x then bowed",
+  "captures": [
+    "affine.png",
+    "before.png",
+    "nudge-bundle.png",
+    "nudge-commit.png",
+    "nudge-undo.png",
+    "target-hidden.png",
+    "thin-warp-before.png",
+    "thin-warp-commit.png",
+    "thin-warp-preview.png",
+    "thin-warp-stretch.png",
+    "warp.png"
+  ],
+  "inspection": "passed",
+  "nudge_fixture_pause_ms": 10000,
+  "nudge_clock_note": "The offscreen driver advances synthetic time between calls; the 10s configured pause covers the five-call fixture. Default pause timing has separate upstream unit tests.",
+  "observations": "Green alone moves in affine, Warp and grouped nudge previews/commit while Red remains fixed. Hiding Green keeps Warp handles and controls active. One undo restores the configured nudge group to pivot (16,12). A selected 3px Green column scales 30x and its bow persists through full-resolution commit; Red/Blue remain black. Selection outlines follow the transform.",
+  "png_sha256": {
+    "affine.png": "bdad97916345136fa1045f060152600ffca36ba565e375bbc2f7598e6b58eba9",
+    "before.png": "d256f3e783bba932aa04ac8c03db125b94e25c535e1ca10cc387663865d4b256",
+    "nudge-bundle.png": "539045cd53cd6512a14f1d4cfd440493f7818a17c2259c04ee7f8ba81020d8e3",
+    "nudge-commit.png": "b30f20a4bfa34d11e857fe208f1016a4da2d789ed4eb8b67694769a3b9c25cb4",
+    "nudge-undo.png": "7f4071483bb55b72929c9d43835b343e676dd14414133faac13f4a1b1f21f632",
+    "target-hidden.png": "7a259b56d5cc685298bb1f4f854081c31eb361b5b3eed78451422bfefa38c645",
+    "thin-warp-before.png": "76e50bee6268da7ed6e4e1f54ad38f52e73c4266d3d778988805dab971133930",
+    "thin-warp-commit.png": "0ca9f1177f6645a3bf68f2b625840ad5607b9f68214121904cb4b948dff57968",
+    "thin-warp-preview.png": "17ef6ba5ab8a061a504fe8db88848507c46887f360bc107a0cd0cef7b431ddc3",
+    "thin-warp-stretch.png": "4a9bc3ae1bb56991a500ea372b3f25f980384288ad40cbb9ae9a23a5af6b0d78",
+    "warp.png": "660f3ae0f8055541bc1f783c6a3703b2e9ecab769303af1295552719f525906e"
+  }
+}

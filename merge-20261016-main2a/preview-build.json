@@ -1,0 +1,7 @@
+{
+  "head": "71391d865406c581def37981126502572d607e6c",
+  "tree": "1c4742230e5b68bee18dd5b596643a7475ff7d3f",
+  "sha256": "349762b6d804e83739278690e93d55c8d1d86d8e2233a453cb2d23884bb583fe",
+  "harness_sha256": "d539eaaabe67dfd3527d9173ceac9d88049e0941906574d92423467f1a9e6e0d",
+  "scope": "Identical harness compared with preserved d987d0e9 release binary; this upstream integration batch; software Vulkan measurements"
+}

@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "date": "2026-10-16",
+  "pr": "https://github.com/storytold/photocraft/pull/4648",
+  "head": "71391d865406c581def37981126502572d607e6c",
+  "tree": "1c4742230e5b68bee18dd5b596643a7475ff7d3f",
+  "operation": "merge",
+  "parents": [
+    "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+    "2a952f164c0b4cf936b1c6497db10dd095341c00"
+  ],
+  "upstream_main": "2a952f164c0b4cf936b1c6497db10dd095341c00",
+  "history_preserved": true,
+  "toolchain": "Rust 1.99.0",
+  "integration": "Retain upstream authorization scopes and shared Session::admit prechecks; enforce captured channel target before explicit-layer admission and geometric target injection; keep ordinary new-layer transform switching while rejecting implicit commit of isolated channel transforms. Two new engine/UI precheck regressions. Four preview pixel-oracles use upstream photocraft_testkit::gpu_lock so all GPU devices serialize together in the UI suite.",
+  "full_tests": {
+    "passed": 5730,
+    "failed": 0,
+    "ignored": 57,
+    "suites": 109
+  },
+  "test_scope": "Algo, engine, UI and automation; all unit/integration tests plus doctests. Examples compile under all-target Clippy; snapshot and release performance examples built separately.",
+  "test_breakdown": {
+    "tests": {
+      "passed": 5730,
+      "failed": 0,
+      "ignored": 57,
+      "suites": 105
+    },
+    "doctests": {
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "suites": 4
+    }
+  },
+  "resolved_conflicts": [
+    "crates/engine/src/jobs.rs",
+    "crates/engine/src/lib.rs"
+  ],
+  "gate_exit_codes": {
+    "fmt": 0,
+    "layers": 0,
+    "scorecard": 0,
+    "clippy": 0,
+    "tests": 0,
+    "doctests": 0,
+    "wasm": 0,
+    "panic-hunt": 0,
+    "snapshot-build": 0,
+    "gpu-oracles": 0,
+    "gpu-oracles-nvidia": 0,
+    "release-build": 0,
+    "perf-quick": 0,
+    "24mp-compare": 0,
+    "visual-inspection": 0
+  },
+  "gpu_pixel_oracles": {
+    "gpu-oracles": {
+      "exit_code": 0,
+      "passed": 4,
+      "seconds": 27.89,
+      "adapter": "llvmpipe Vulkan",
+      "head": "71391d865406c581def37981126502572d607e6c",
+      "binary_sha256": "44aa35c462e4af945ff4ebe12412f88860241bd916d2bdf65e324a7ef2a5fb8b",
+      "scope": "Four native-depth/selection/geometry/visibility GPU pixel oracles including 48 thin-Warp cases, no adapter skips; shared GPU for correctness, not timing comparison"
+    },
+    "gpu-oracles-nvidia": {
+      "exit_code": 0,
+      "passed": 4,
+      "seconds": 40.13,
+      "adapter": "NVIDIA Vulkan",
+      "head": "71391d865406c581def37981126502572d607e6c",
+      "binary_sha256": "44aa35c462e4af945ff4ebe12412f88860241bd916d2bdf65e324a7ef2a5fb8b",
+      "scope": "Four native-depth/selection/geometry/visibility GPU pixel oracles including 48 thin-Warp cases, no adapter skips; shared GPU for correctness, not timing comparison"
+    }
+  },
+  "visual_verification": {
+    "source": "71391d865406c581def37981126502572d607e6c",
+    "upstream_main": "2a952f164c0b4cf936b1c6497db10dd095341c00",
+    "adapter": "llvmpipe Vulkan GPU canvas",
+    "binary_build": "Built from current merge source with cargo build --example snapshot; tracked source clean",
+    "binary_sha256": "54b3a4e60a69f4950904b58e3f3942cfd59a9da6f27b9eda7ca9a13e9bd977ea",
+    "fixture": "Synthetic RGB8; partial selected Green with Red fixed; affine, Warp, eyes and grouped nudges; selected 3px Green column stretched 30x then bowed",
+    "captures": [
+      "affine.png",
+      "before.png",
+      "nudge-bundle.png",
+      "nudge-commit.png",
+      "nudge-undo.png",
+      "target-hidden.png",
+      "thin-warp-before.png",
+      "thin-warp-commit.png",
+      "thin-warp-preview.png",
+      "thin-warp-stretch.png",
+      "warp.png"
+    ],
+    "inspection": "passed",
+    "nudge_fixture_pause_ms": 10000,
+    "nudge_clock_note": "The offscreen driver advances synthetic time between calls; the 10s configured pause covers the five-call fixture. Default pause timing has separate upstream unit tests.",
+    "observations": "Green alone moves in affine, Warp and grouped nudge previews/commit while Red remains fixed. Hiding Green keeps Warp handles and controls active. One undo restores the configured nudge group to pivot (16,12). A selected 3px Green column scales 30x and its bow persists through full-resolution commit; Red/Blue remain black. Selection outlines follow the transform.",
+    "png_sha256": {
+      "affine.png": "bdad97916345136fa1045f060152600ffca36ba565e375bbc2f7598e6b58eba9",
+      "before.png": "d256f3e783bba932aa04ac8c03db125b94e25c535e1ca10cc387663865d4b256",
+      "nudge-bundle.png": "539045cd53cd6512a14f1d4cfd440493f7818a17c2259c04ee7f8ba81020d8e3",
+      "nudge-commit.png": "b30f20a4bfa34d11e857fe208f1016a4da2d789ed4eb8b67694769a3b9c25cb4",
+      "nudge-undo.png": "7f4071483bb55b72929c9d43835b343e676dd14414133faac13f4a1b1f21f632",
+      "target-hidden.png": "7a259b56d5cc685298bb1f4f854081c31eb361b5b3eed78451422bfefa38c645",
+      "thin-warp-before.png": "76e50bee6268da7ed6e4e1f54ad38f52e73c4266d3d778988805dab971133930",
+      "thin-warp-commit.png": "0ca9f1177f6645a3bf68f2b625840ad5607b9f68214121904cb4b948dff57968",
+      "thin-warp-preview.png": "17ef6ba5ab8a061a504fe8db88848507c46887f360bc107a0cd0cef7b431ddc3",
+      "thin-warp-stretch.png": "4a9bc3ae1bb56991a500ea372b3f25f980384288ad40cbb9ae9a23a5af6b0d78",
+      "warp.png": "660f3ae0f8055541bc1f783c6a3703b2e9ecab769303af1295552719f525906e"
+    }
+  },
+  "quick_performance": {
+    "schema": 1,
+    "mode": "quick",
+    "date": "2026-10-16T10:48:50Z",
+    "commit": "71391d865406c581def37981126502572d607e6c",
+    "dirty": false,
+    "failures": [],
+    "baseline_note": "baseline is from machine class `macos-aarch64-apple-m4-pro-apple-m4-pro`, this is `linux-x86-64-amd-ryzen-7-9700x-8-core-processor-nvidia-geforce-rtx-3090`: regression check skipped",
+    "note": "Quick budgets do not apply. Stored baseline uses a different machine class. No baseline or budget changed. NVIDIA Vulkan shared with another workload; not a direct preview timing comparison."
+  },
+  "24mp_comparison": {
+    "before": "d987d0e9367c51746fdf9fa7b94ba63267a4a825",
+    "after": "71391d865406c581def37981126502572d607e6c",
+    "scope": "Previously published d987d0e9 release versus current merge, including the captured upstream integration. Software Vulkan; not a new RTX measurement.",
+    "adapter": "llvmpipe Vulkan software adapter; these are not new NVIDIA measurements",
+    "samples": "6 interleaved runs/build/mode; 54 frames/case; integer and fractional affine dragging and affine-patch Warp"
+  }
+}

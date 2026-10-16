@@ -1,0 +1,72 @@
+{
+  "fmt": {
+    "exit_code": 0,
+    "seconds": 5.61
+  },
+  "layers": {
+    "exit_code": 0,
+    "seconds": 0.45
+  },
+  "scorecard": {
+    "exit_code": 0,
+    "seconds": 0.23
+  },
+  "clippy": {
+    "exit_code": 0,
+    "seconds": 0.79
+  },
+  "tests": {
+    "exit_code": 0,
+    "seconds": 241.88
+  },
+  "doctests": {
+    "exit_code": 0,
+    "seconds": 4.66
+  },
+  "wasm": {
+    "exit_code": 0,
+    "seconds": 35.49
+  },
+  "panic-hunt": {
+    "exit_code": 0,
+    "seconds": 112.84
+  },
+  "snapshot-build": {
+    "exit_code": 0,
+    "seconds": 110.89
+  },
+  "gpu-oracles": {
+    "exit_code": 0,
+    "passed": 4,
+    "seconds": 27.89,
+    "adapter": "llvmpipe Vulkan",
+    "head": "71391d865406c581def37981126502572d607e6c",
+    "binary_sha256": "44aa35c462e4af945ff4ebe12412f88860241bd916d2bdf65e324a7ef2a5fb8b",
+    "scope": "Four native-depth/selection/geometry/visibility GPU pixel oracles including 48 thin-Warp cases, no adapter skips; shared GPU for correctness, not timing comparison"
+  },
+  "gpu-oracles-nvidia": {
+    "exit_code": 0,
+    "passed": 4,
+    "seconds": 40.13,
+    "adapter": "NVIDIA Vulkan",
+    "head": "71391d865406c581def37981126502572d607e6c",
+    "binary_sha256": "44aa35c462e4af945ff4ebe12412f88860241bd916d2bdf65e324a7ef2a5fb8b",
+    "scope": "Four native-depth/selection/geometry/visibility GPU pixel oracles including 48 thin-Warp cases, no adapter skips; shared GPU for correctness, not timing comparison"
+  },
+  "release-build": {
+    "exit_code": 0,
+    "seconds": 485.58
+  },
+  "perf-quick": {
+    "exit_code": 0,
+    "seconds": 73.45
+  },
+  "24mp-compare": {
+    "exit_code": 0,
+    "seconds": 43.27
+  },
+  "visual-inspection": {
+    "exit_code": 0,
+    "captures": 11
+  }
+}
