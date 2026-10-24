@@ -1190,6 +1190,8 @@ impl PhotocraftApp {
     /// Draw the document canvas on the GPU (custom WGSL shader) instead of via egui textures.
     /// Call from the app creator with `cc.wgpu_render_state`; without it the CPU path is used.
     pub fn set_wgpu(&mut self, rs: eframe::egui_wgpu::RenderState) {
+        self.move_gpu_preview = None;
+        channel_transform_preview::release_gpu(self);
         // Preferences › Performance › cache tile size (PHOTOCRAFT_GPU_TILE still overrides).
         let tile = self.session.prefs().performance.cache_tile_size;
         // Escaped driver/setup panics must leave the session and CPU canvas alive.
@@ -1214,7 +1216,6 @@ impl PhotocraftApp {
             }
         };
         self.perf.gpu_info.canvas = "gpu".into();
-        self.move_gpu_preview = None;
         self.window_device = Some((rs.device.clone(), gpu.health().clone()));
         self.gpu = Some(gpu);
         self.prefs_rt.gpu_style = None;

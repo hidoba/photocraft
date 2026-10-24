@@ -523,6 +523,10 @@ mod tests {
             app.set_wgpu(rs.clone());
             assert!(app.move_gpu_preview.is_none(), "replacing the GPU drops textures from the old device");
             assert!(super::channel_texture(&mut app, 0, None).is_some(), "the current drag can recapture on the new GPU");
+            crate::gpu_status::fall_back(&mut app, &photocraft_gpu::Fault::Error("Validation Error".into()));
+            assert!(app.move_gpu_preview.is_none(), "CPU fallback releases the GPU drag capture");
+            app.set_wgpu(rs.clone());
+            assert!(super::channel_texture(&mut app, 0, None).is_some(), "retry preserves the active drag");
             crate::canvas::tool_event(&mut app, ToolEvent::Up { x: 257.0, y: 16.0 }, m);
             assert!(app.move_gpu_preview.is_none(), "release drops cached GPU source");
             assert_eq!(

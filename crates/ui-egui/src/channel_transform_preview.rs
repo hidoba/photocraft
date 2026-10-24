@@ -136,6 +136,15 @@ fn limit_image(image: ColorImage, max_side: usize) -> ColorImage {
     ColorImage::new(size, pixels)
 }
 
+/// Free device-owned captures on fallback or renderer replacement. The immutable source and
+/// CPU textures stay valid, so the transform can continue and recapture on a recovered GPU.
+pub(crate) fn release_gpu(app: &mut PhotocraftApp) {
+    if let Some(preview) = app.transform_preview.as_mut().and_then(|p| p.channel.as_mut()) {
+        preview.gpu = None;
+        preview.gpu_attempted = false;
+    }
+}
+
 /// Current preview texture: the eyes affect rendering only, never the captured source or target.
 pub(crate) fn texture(app: &mut PhotocraftApp, ctx: &egui::Context, idx: usize, output: Option<u32>) -> Option<egui::TextureId> {
     if app.session.active_index() != Some(idx) {
@@ -632,6 +641,58 @@ mod tests {
         let mut app = PhotocraftApp::new(session, crate::Services::default());
         app.sync_views();
         app
+    }
+
+    #[test]
+    fn gpu_recovery_releases_channel_preview_without_changing_the_transform() {
+        let _gpu_test = photocraft_testkit::gpu_lock();
+        let Ok(rs) = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+            egui_kittest::wgpu::create_render_state(crate::gpu_canvas::wgpu_setup(), Default::default())
+        })) else {
+            eprintln!("no GPU adapter for channel preview recovery");
+            return;
+        };
+        let mut a = app();
+        a.set_wgpu(rs.clone());
+        a.run("channel.target", json!({"channel":"green"})).unwrap();
+        a.run("channel.setVisible", json!({"channel":"composite","visible":true})).unwrap();
+        let ctx = egui::Context::default();
+        crate::transform_tool::begin(&mut a, &ctx).unwrap();
+        let t = a.ui.transform.as_mut().unwrap();
+        t.quad = t.quad.map(|[x, y]| [x + 3.0, y]);
+        let (document, view, transform) = (a.session.active().unwrap().doc.clone(), a.session.active().unwrap().channel_view.clone(), a.ui.transform.clone());
+        let original = texture(&mut a, &ctx, 0, None).unwrap();
+        let pixels = a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap().gpu.as_ref().unwrap().readback();
+
+        // A replacement renderer must not reuse a texture registered on the previous one.
+        a.set_wgpu(rs);
+        let preview = a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap();
+        assert!(preview.gpu.is_none() && !preview.gpu_attempted, "renderer replacement releases the old capture");
+        assert_ne!(texture(&mut a, &ctx, 0, None), Some(original), "the preview recaptures its GPU source");
+
+        // Upstream's automatic OOM recovery frees preview allocations before retrying too.
+        a.gpu_health().unwrap().mark(photocraft_gpu::Fault::Error("Out of Memory".into()));
+        crate::gpu_status::check(&mut a, &ctx);
+        assert!(a.gpu_active());
+        let preview = a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap();
+        assert!(preview.gpu.is_none() && !preview.gpu_attempted, "OOM recovery releases the old capture");
+        assert!(texture(&mut a, &ctx, 0, None).is_some());
+        let recovered = a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap().gpu.as_ref().unwrap().readback();
+        assert_eq!(recovered, pixels, "recapturing preserves the transformed preview");
+
+        // A permanent fallback releases its GPU allocations and can render through the CPU.
+        a.gpu_health().unwrap().mark(photocraft_gpu::Fault::Error("Validation Error".into()));
+        crate::gpu_status::check(&mut a, &ctx);
+        assert!(!a.gpu_active());
+        assert!(a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap().gpu.is_none());
+        assert!(texture(&mut a, &ctx, 0, None).is_some());
+        assert_eq!(a.ui.transform, transform);
+        assert_eq!(a.session.active().unwrap().doc, document);
+        assert_eq!(a.session.active().unwrap().channel_view, view);
+        assert!(photocraft_engine::channel_transform::locked(&a.session));
+        crate::transform_tool::cancel(&mut a);
+        assert!(!photocraft_engine::channel_transform::locked(&a.session));
+        assert_eq!(a.session.active().unwrap().doc, document);
     }
 
     #[test]
