@@ -168,15 +168,17 @@ fn render_with_source(
     // ⌥-click mask view (#196): the pixel mask alone, in grayscale (white reveals); ⇧⌥ with
     // nothing else shown: just the rubylith. Use the compositor's cached feather for the pixel
     // mask, but leave vector masks out: this view targets the pixel mask channel by itself.
-    let feathered_mask = v
-        .layer_mask
-        .and_then(|view| doc.layer(view.layer))
-        .filter(|layer| layer.mask.as_ref().is_some_and(|mask| mask.enabled && photocraft_compose::masks::feather_sigma(mask.feather) > 0.0))
-        .and_then(|layer| {
-            let mut pixel_mask_layer = layer.clone();
-            pixel_mask_layer.vector_mask = None;
-            photocraft_compose::masks::combined_mask(&pixel_mask_layer, doc.bounds())
-        });
+    let feathered_mask = v.layer_mask.and_then(|view| {
+        let layer = doc.layer(view.layer)?;
+        let mask = photocraft_engine::mask_view_cmds::viewed_mask(layer, view.filter)?;
+        if !mask.enabled || photocraft_compose::masks::feather_sigma(mask.feather) <= 0.0 {
+            return None;
+        }
+        let mut pixel_mask_layer = layer.clone();
+        pixel_mask_layer.mask = Some(mask.clone());
+        pixel_mask_layer.vector_mask = None;
+        photocraft_compose::masks::combined_mask(&pixel_mask_layer, doc.bounds())
+    });
     let shown_mask = layer_mask.map(|(m, mode)| (feathered_mask.as_ref().unwrap_or(&m.surface), mode));
     let only_mask = ChannelView { layer_mask: None, ..v.clone() }.is_plain(doc);
     match shown_mask {
@@ -637,6 +639,45 @@ mod tests {
         let alpha = 0.5 * (1.0 - softened);
         let red = AlphaChannel::DEFAULT_COLOR.to_rgb();
         assert_eq!(overlay[0], Color32::from_rgba_premultiplied(q(red[0] * alpha), q(red[1] * alpha), q(red[2] * alpha), q(alpha)));
+    }
+
+    #[test]
+    fn filter_mask_views_use_the_filter_masks_own_feather() {
+        for (layer_feather, filter_feather) in [(4.0, 0.0), (0.0, 4.0), (4.0, 4.0)] {
+            let mut s = Session::new();
+            s.execute("file.new", json!({"width": 37, "height": 21})).unwrap();
+            s.execute("layer.new.layer", json!({})).unwrap();
+            s.execute("edit.fill", json!({"color": "#336699"})).unwrap();
+            s.execute("layer.smartObjects.convertToSmartObject", json!({})).unwrap();
+            s.execute("filter.blur.gaussianBlur", json!({"radius": 2})).unwrap();
+            s.execute("layer.layerMask.hideAll", json!({})).unwrap();
+            s.execute("paint.gradient", json!({"from": [0, 0], "to": [37, 0], "colors": ["#000000", "#ffffff"], "target": "filterMask"})).unwrap();
+            s.edit("mask feathers", |doc, active| {
+                let layer = doc.layer_mut(active.unwrap()).unwrap();
+                layer.mask.as_mut().unwrap().feather = layer_feather;
+                let photocraft_doc::LayerContent::Smart(sm) = &mut layer.content else { panic!("smart object") };
+                sm.filter_mask.as_mut().unwrap().feather = filter_feather;
+                Ok(())
+            })
+            .unwrap();
+            s.execute("view.layerMask", json!({"mode": "gray", "mask": "filter"})).unwrap();
+            let st = s.active().unwrap();
+            let bounds = st.doc.bounds();
+            let mut layer = st.doc.layer(st.active_layer.unwrap()).unwrap().clone();
+            layer.mask = photocraft_engine::mask_view_cmds::viewed_mask(&layer, true).cloned();
+            layer.vector_mask = None;
+            let effective = photocraft_compose::masks::combined_mask(&layer, bounds).unwrap_or_else(|| layer.mask.as_ref().unwrap().surface.clone());
+            let softened = effective.sample_channel(0, 0, 0);
+            let gray = render(&st.doc, &st.channel_view, bounds, 1, Look::default(), st.active_layer).unwrap();
+            assert_eq!(gray[0], Color32::from_gray(q(softened)), "layer feather {layer_feather}, filter feather {filter_feather}");
+
+            s.execute("view.layerMask", json!({"mode": "overlay", "mask": "filter"})).unwrap();
+            let st = s.active().unwrap();
+            let overlay = render(&st.doc, &st.channel_view, bounds, 1, Look::default(), st.active_layer).unwrap();
+            let alpha = 0.5 * (1.0 - softened);
+            let red = AlphaChannel::DEFAULT_COLOR.to_rgb();
+            assert_eq!(overlay[0], Color32::from_rgba_premultiplied(q(red[0] * alpha), q(red[1] * alpha), q(red[2] * alpha), q(alpha)));
+        }
     }
 
     /// Layer Mask Display Options: the rubylith takes their colour and opacity, alone over the

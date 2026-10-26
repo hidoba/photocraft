@@ -67,6 +67,12 @@ pub fn params(s: &Session, p: &Value) -> Result<Value> {
         map.insert("layer".into(), json!(layer.0));
     }
     if let Some(target) = map.get("target") {
+        // A Smart Filter mask can be painted and filtered, but geometric edits move its
+        // smart object. Preserve that command behaviour even when the target is explicit.
+        if target == "filterMask" {
+            map.insert("target".into(), json!("pixels"));
+            return Ok(out);
+        }
         let valid = matches!(target.as_str(), Some("pixels" | "mask" | "quickMask"))
             || target.as_object().is_some_and(|o| {
                 o.len() == 1 && (o.get("color").or_else(|| o.get("channel"))).is_some_and(|v| v.as_u64().and_then(|n| usize::try_from(n).ok()).is_some())
@@ -86,7 +92,7 @@ pub fn params(s: &Session, p: &Value) -> Result<Value> {
         ChannelTarget::Alpha(i) => json!({"channel": i}),
         ChannelTarget::LayerMask => json!("mask"),
         ChannelTarget::Composite if st.doc.quick_mask.is_some() => json!("quickMask"),
-        ChannelTarget::Composite if crate::mask_view_cmds::current(st).is_some() => json!("mask"),
+        ChannelTarget::Composite if crate::mask_view_cmds::current(st).is_some_and(|v| !v.filter) => json!("mask"),
         _ => json!("pixels"),
     };
     map.insert("target".into(), target);
@@ -107,7 +113,7 @@ pub fn visible(s: &Session, p: &Value) -> Result<bool> {
         return Ok(st.channel_view.color_visible(k) && crate::mask_view_cmds::current(st).is_none_or(|v| v.mode != crate::mask_view_cmds::MaskViewMode::Gray));
     }
     Ok(match crate::channel_cmds::target_of(p) {
-        crate::channel_cmds::Target::Mask => crate::mask_view_cmds::current(st).is_some(),
+        crate::channel_cmds::Target::Mask => crate::mask_view_cmds::current(st).is_some_and(|v| !v.filter),
         crate::channel_cmds::Target::Alpha(i) => st.channel_view.alpha_shown(i),
         crate::channel_cmds::Target::QuickMask => !st.channel_view.quick_mask_hidden,
         _ => true,
