@@ -244,6 +244,41 @@ fn interactive_guard_blocks_retargeting_but_all_eyes_remain_available() {
 }
 
 #[test]
+fn history_edit_paths_preserve_a_captured_channel_transform() {
+    for undoable_visibility in [false, true] {
+        for non_linear in [false, true] {
+            let mut s = session(ColorMode::Rgb, SampleType::U8);
+            s.execute("history.options", json!({"makeLayerVisibilityChangesUndoable":undoable_visibility,"allowNonLinearHistory":non_linear})).unwrap();
+            s.edit("before capture", |doc, _| {
+                doc.name = "captured document".into();
+                Ok(())
+            })
+            .unwrap();
+            s.execute("channel.target", json!({"channel":"red"})).unwrap();
+            let st = s.active_mut().unwrap();
+            st.channel_transform = Some(Guard { layer: st.active_layer, target: json!({"color":0}) });
+            let before = st.doc.clone();
+            let history = st.history.entries();
+            let view = st.channel_view.clone();
+            let active = st.active_layer;
+            assert!(s.edit_visibility::<()>("visibility", |_, _| panic!("locked visibility edit must never run")).unwrap_err().to_string().contains(LOCKED));
+            for record in [false, true] {
+                assert!(s.edit_with::<()>("direct edit", record, |_, _| panic!("locked edit must never run")).unwrap_err().to_string().contains(LOCKED));
+            }
+            assert!(!s.rollback(), "rollback must not replace the captured document");
+            let st = s.active().unwrap();
+            assert!(Arc::ptr_eq(&before, &st.doc));
+            assert_eq!(st.history.entries(), history);
+            assert_eq!(st.channel_view, view);
+            assert_eq!(st.active_layer, active);
+            assert!(locked(&s));
+            s.clear_channel_transforms();
+            assert!(s.rollback(), "rollback works after the capture is released");
+        }
+    }
+}
+
+#[test]
 fn prechecks_cannot_bypass_the_captured_channel_target() {
     for depth in [SampleType::U8, SampleType::U16, SampleType::F32] {
         let mut s = session(ColorMode::Rgb, depth);
