@@ -471,6 +471,32 @@ mod tests {
         }
     }
 
+    fn gpu_oracle_document(depth: SampleType, selection: usize) -> Document {
+        let mut doc = Document::with_background("GPU oracle", Size::new(32, 24), ColorMode::Rgb, depth, Color::WHITE);
+        doc.layers[0].opacity = 0.7;
+        let s = doc.layers[0].surface_mut().unwrap();
+        for y in 0..24 {
+            for x in 0..32 {
+                s.write_pixel(x, y, &[0.1 + x as f32 / 40.0, 0.1 + y as f32 / 32.0, 0.3, 0.75]);
+            }
+        }
+        if depth == SampleType::F32 {
+            s.fill_rect(Rect::new(10, 8, 14, 12), &[2.0, -0.2, 0.4, 0.8]);
+        }
+        if selection == 1 {
+            let mut sel = photocraft_raster::Surface::new(photocraft_color::PixelFormat::new(ColorMode::Grayscale, SampleType::F32, false));
+            sel.fill_rect(Rect::new(4, 4, 24, 20), &[0.5]);
+            sel.fill_rect(Rect::new(8, 8, 20, 16), &[1.0]);
+            doc.selection = Some(sel);
+        }
+        if selection == 2 {
+            let mut sel = photocraft_raster::Surface::new(photocraft_color::PixelFormat::GRAY8);
+            sel.fill_rect(doc.bounds(), &[1.0]);
+            doc.selection = Some(sel);
+        }
+        doc
+    }
+
     #[test]
     fn gpu_colour_preview_matches_cpu_for_depth_selection_geometry_and_eyes() {
         let _gpu_test = photocraft_testkit::gpu_lock();
@@ -486,28 +512,7 @@ mod tests {
         for depth in [SampleType::U8, SampleType::U16, SampleType::F32] {
             for selection in 0..3 {
                 let mut a = app();
-                let mut doc = Document::with_background("GPU oracle", Size::new(32, 24), ColorMode::Rgb, depth, Color::WHITE);
-                doc.layers[0].opacity = 0.7;
-                let s = doc.layers[0].surface_mut().unwrap();
-                for y in 0..24 {
-                    for x in 0..32 {
-                        s.write_pixel(x, y, &[0.1 + x as f32 / 40.0, 0.1 + y as f32 / 32.0, 0.3, 0.75]);
-                    }
-                }
-                if depth == SampleType::F32 {
-                    s.fill_rect(Rect::new(10, 8, 14, 12), &[2.0, -0.2, 0.4, 0.8]);
-                }
-                if selection == 1 {
-                    let mut sel = photocraft_raster::Surface::new(photocraft_color::PixelFormat::new(ColorMode::Grayscale, SampleType::F32, false));
-                    sel.fill_rect(Rect::new(4, 4, 24, 20), &[0.5]);
-                    sel.fill_rect(Rect::new(8, 8, 20, 16), &[1.0]);
-                    doc.selection = Some(sel);
-                }
-                if selection == 2 {
-                    let mut sel = photocraft_raster::Surface::new(photocraft_color::PixelFormat::GRAY8);
-                    sel.fill_rect(doc.bounds(), &[1.0]);
-                    doc.selection = Some(sel);
-                }
+                let doc = gpu_oracle_document(depth, selection);
                 a.session.add_document(doc, None);
                 a.run("channel.target", json!({"channel":"green"})).unwrap();
                 crate::transform_tool::begin(&mut a, &egui::Context::default()).unwrap();
@@ -1184,93 +1189,97 @@ mod tests {
         for selection in 0..4 {
             for warp in [false, true] {
                 for commit in [false, true] {
-                    let mut a = app();
-                    if selection == 1 {
-                        a.run("select.all", json!({})).unwrap();
-                    }
-                    if selection >= 2 {
-                        a.run("select.rect", json!({"x":4,"y":4,"width":12,"height":12})).unwrap();
-                    }
-                    if selection == 3 {
-                        a.run("select.modify.feather", json!({"radius":1})).unwrap();
-                    }
-                    a.run("channel.new", json!({"name":"overlay"})).unwrap();
-                    a.run("channel.target", json!({"channel":"red"})).unwrap();
-                    a.run("channel.setVisible", json!({"channel":"green","visible":true})).unwrap();
-                    a.run("channel.setVisible", json!({"channel":0,"visible":true})).unwrap();
-                    let before = a.session.active().unwrap().doc.clone();
-                    let view = a.session.active().unwrap().channel_view.clone();
-                    let history = a.session.active().unwrap().history.past_len();
-                    crate::transform_tool::begin(&mut a, &egui::Context::default()).unwrap();
-                    assert_eq!(a.session.active().unwrap().channel_view, view, "start preserves every eye");
-                    let t = a.ui.transform.as_mut().unwrap();
-                    t.quad = t.quad.map(|[x, y]| [x + 3.0, y]);
-                    if warp {
-                        t.warp = Some(Warp::custom(BezierMesh::identity(t.rect, 1, 1).map_points(|p| [p[0] + 3.0, p[1]]), t.rect));
-                    }
-                    let t = a.ui.transform.clone().unwrap();
-                    let pv = a.transform_preview.as_mut().unwrap().channel.as_mut().unwrap();
-                    pv.update(&t).unwrap();
-                    let shown = pv.shown.clone();
-                    let expected_image = pv.image(&view, crate::channel_view::Look::default(), None);
-                    for (cmd, p) in [
-                        ("channel.target", json!({"channel":"green"})),
-                        ("layer.select", json!({"layer":t.layer})),
-                        ("channel.delete", json!({"channel":0})),
-                        ("layer.delete", json!({})),
-                        ("select.editInQuickMaskMode", json!({})),
-                        ("history.selectState", json!({"state":0})),
-                    ] {
-                        assert!(a.run(cmd, p).is_err(), "{cmd}");
-                        assert_eq!(a.ui.transform.as_ref().unwrap().quad, t.quad);
-                    }
-                    let ctx = egui::Context::default();
-                    let (req, _) = crate::control::ControlRequest::new("ui.set", json!({"maskTarget":true}));
-                    let crate::control::Outcome::Done(reply) = crate::control::handle(&mut a, &ctx, &req) else { panic!("immediate reply") };
-                    assert_eq!(reply["ok"], false);
-                    a.run("channel.setVisible", json!({"channel":"red","visible":false})).unwrap();
-                    assert!(a.ui.transform.is_some(), "hiding target keeps handles active");
-                    let hidden = a.session.active().unwrap().channel_view.clone();
-                    let pv = a.transform_preview.as_mut().unwrap().channel.as_mut().unwrap();
-                    pv.update(&t).unwrap();
-                    assert!(Arc::ptr_eq(&shown, &pv.shown), "eyes do not resample or change captured geometry");
-                    assert_ne!(pv.image(&hidden, crate::channel_view::Look::default(), None).pixels, expected_image.pixels);
-                    a.run("channel.setVisible", json!({"channel":"red","visible":true})).unwrap();
-                    let restored = a.session.active().unwrap().channel_view.clone();
-                    assert_eq!(
-                        a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap().image(&restored, crate::channel_view::Look::default(), None).pixels,
-                        expected_image.pixels
-                    );
-                    a.run("channel.setVisible", json!({"channel":"composite","visible":false})).unwrap();
-                    a.run("channel.setVisible", json!({"channel":0,"visible":false})).unwrap();
-                    let final_view = a.session.active().unwrap().channel_view.clone();
-                    assert_eq!(final_view.visible_colors(3), 0);
-                    assert_eq!(a.session.active().unwrap().channel_view.target, ChannelTarget::Color(0));
-                    assert!(Arc::ptr_eq(&before, &a.session.active().unwrap().doc), "live preview never edits the document");
-                    if commit {
-                        crate::transform_tool::commit(&mut a);
-                    } else {
-                        crate::transform_tool::cancel(&mut a);
-                    }
-                    assert!(!a.ui.status_error, "{}", a.ui.status);
-                    let st = a.session.active().unwrap();
-                    assert!(st.channel_transform.is_none());
-                    assert_eq!(st.channel_view, final_view);
-                    assert_eq!(st.history.past_len(), history + usize::from(commit));
-                    if commit {
-                        assert_eq!(st.doc.layers[0].surface(), shown.layers[0].surface(), "native preview and commit agree");
-                        a.session.undo();
-                        assert_eq!(a.session.active().unwrap().doc.layers[0].surface(), before.layers[0].surface());
-                        assert_eq!(a.session.active().unwrap().channel_view, final_view, "undo does not undo eyes");
-                        a.session.redo();
-                        assert_eq!(a.session.active().unwrap().doc.layers[0].surface(), shown.layers[0].surface());
-                    } else {
-                        assert!(Arc::ptr_eq(&before, &st.doc));
-                    }
-                    a.run("channel.target", json!({"channel":"blue"})).unwrap();
+                    check_eye_lifecycle(selection, warp, commit);
                 }
             }
         }
+    }
+
+    fn check_eye_lifecycle(selection: u8, warp: bool, commit: bool) {
+        let mut a = app();
+        if selection == 1 {
+            a.run("select.all", json!({})).unwrap();
+        }
+        if selection >= 2 {
+            a.run("select.rect", json!({"x":4,"y":4,"width":12,"height":12})).unwrap();
+        }
+        if selection == 3 {
+            a.run("select.modify.feather", json!({"radius":1})).unwrap();
+        }
+        a.run("channel.new", json!({"name":"overlay"})).unwrap();
+        a.run("channel.target", json!({"channel":"red"})).unwrap();
+        a.run("channel.setVisible", json!({"channel":"green","visible":true})).unwrap();
+        a.run("channel.setVisible", json!({"channel":0,"visible":true})).unwrap();
+        let before = a.session.active().unwrap().doc.clone();
+        let view = a.session.active().unwrap().channel_view.clone();
+        let history = a.session.active().unwrap().history.past_len();
+        crate::transform_tool::begin(&mut a, &egui::Context::default()).unwrap();
+        assert_eq!(a.session.active().unwrap().channel_view, view, "start preserves every eye");
+        let t = a.ui.transform.as_mut().unwrap();
+        t.quad = t.quad.map(|[x, y]| [x + 3.0, y]);
+        if warp {
+            t.warp = Some(Warp::custom(BezierMesh::identity(t.rect, 1, 1).map_points(|p| [p[0] + 3.0, p[1]]), t.rect));
+        }
+        let t = a.ui.transform.clone().unwrap();
+        let pv = a.transform_preview.as_mut().unwrap().channel.as_mut().unwrap();
+        pv.update(&t).unwrap();
+        let shown = pv.shown.clone();
+        let expected_image = pv.image(&view, crate::channel_view::Look::default(), None);
+        for (cmd, p) in [
+            ("channel.target", json!({"channel":"green"})),
+            ("layer.select", json!({"layer":t.layer})),
+            ("channel.delete", json!({"channel":0})),
+            ("layer.delete", json!({})),
+            ("select.editInQuickMaskMode", json!({})),
+            ("history.selectState", json!({"state":0})),
+        ] {
+            assert!(a.run(cmd, p).is_err(), "{cmd}");
+            assert_eq!(a.ui.transform.as_ref().unwrap().quad, t.quad);
+        }
+        let ctx = egui::Context::default();
+        let (req, _) = crate::control::ControlRequest::new("ui.set", json!({"maskTarget":true}));
+        let crate::control::Outcome::Done(reply) = crate::control::handle(&mut a, &ctx, &req) else { panic!("immediate reply") };
+        assert_eq!(reply["ok"], false);
+        a.run("channel.setVisible", json!({"channel":"red","visible":false})).unwrap();
+        assert!(a.ui.transform.is_some(), "hiding target keeps handles active");
+        let hidden = a.session.active().unwrap().channel_view.clone();
+        let pv = a.transform_preview.as_mut().unwrap().channel.as_mut().unwrap();
+        pv.update(&t).unwrap();
+        assert!(Arc::ptr_eq(&shown, &pv.shown), "eyes do not resample or change captured geometry");
+        assert_ne!(pv.image(&hidden, crate::channel_view::Look::default(), None).pixels, expected_image.pixels);
+        a.run("channel.setVisible", json!({"channel":"red","visible":true})).unwrap();
+        let restored = a.session.active().unwrap().channel_view.clone();
+        assert_eq!(
+            a.transform_preview.as_ref().unwrap().channel.as_ref().unwrap().image(&restored, crate::channel_view::Look::default(), None).pixels,
+            expected_image.pixels
+        );
+        a.run("channel.setVisible", json!({"channel":"composite","visible":false})).unwrap();
+        a.run("channel.setVisible", json!({"channel":0,"visible":false})).unwrap();
+        let final_view = a.session.active().unwrap().channel_view.clone();
+        assert_eq!(final_view.visible_colors(3), 0);
+        assert_eq!(a.session.active().unwrap().channel_view.target, ChannelTarget::Color(0));
+        assert!(Arc::ptr_eq(&before, &a.session.active().unwrap().doc), "live preview never edits the document");
+        if commit {
+            crate::transform_tool::commit(&mut a);
+        } else {
+            crate::transform_tool::cancel(&mut a);
+        }
+        assert!(!a.ui.status_error, "{}", a.ui.status);
+        let st = a.session.active().unwrap();
+        assert!(st.channel_transform.is_none());
+        assert_eq!(st.channel_view, final_view);
+        assert_eq!(st.history.past_len(), history + usize::from(commit));
+        if commit {
+            assert_eq!(st.doc.layers[0].surface(), shown.layers[0].surface(), "native preview and commit agree");
+            a.session.undo();
+            assert_eq!(a.session.active().unwrap().doc.layers[0].surface(), before.layers[0].surface());
+            assert_eq!(a.session.active().unwrap().channel_view, final_view, "undo does not undo eyes");
+            a.session.redo();
+            assert_eq!(a.session.active().unwrap().doc.layers[0].surface(), shown.layers[0].surface());
+        } else {
+            assert!(Arc::ptr_eq(&before, &st.doc));
+        }
+        a.run("channel.target", json!({"channel":"blue"})).unwrap();
     }
 
     #[test]

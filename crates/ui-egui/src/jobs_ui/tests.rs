@@ -929,27 +929,32 @@ fn isolated_channel_background_commit_preserves_target_samples_eyes_and_cancel()
         if cancel {
             assert!(Arc::ptr_eq(&before, &st.doc));
         } else {
-            let id = st.active_layer.unwrap();
-            let original = before.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds());
-            let surface = st.doc.layer(id).unwrap().surface().unwrap();
-            let moved = surface.to_interleaved(st.doc.bounds());
-            assert_ne!(moved, original);
-            for (a, b) in moved.as_chunks::<4>().0.iter().zip(original.as_chunks::<4>().0) {
-                for c in [0, 2, 3] {
-                    assert_eq!(a[c], b[c], "untargeted encoded sample {c}");
-                }
-            }
-            assert!((surface.sample_channel(45, 45, 1) - 0.22).abs() < 0.01, "use the captured background");
-            assert_eq!(st.doc.selection.as_ref().unwrap().content_bounds(), photocraft_geom::Rect::new(64, 48, 144, 108));
-            assert!(app.session.undo());
-            assert_eq!(app.session.active().unwrap().doc.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds()), original);
-            assert_eq!(app.session.active().unwrap().channel_view, view);
-            assert!(app.session.redo());
-            assert_eq!(app.session.active().unwrap().doc.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds()), moved);
-            assert_eq!(app.session.active().unwrap().channel_view, view);
+            assert_committed_channel(app, &before, view);
         }
         app.run("channel.target", json!({"channel":"red"})).unwrap();
     }
+}
+
+fn assert_committed_channel(app: &mut PhotocraftApp, before: &photocraft_doc::Document, view: photocraft_engine::channel_cmds::ChannelView) {
+    let st = app.session.active().unwrap();
+    let id = st.active_layer.unwrap();
+    let original = before.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds());
+    let surface = st.doc.layer(id).unwrap().surface().unwrap();
+    let moved = surface.to_interleaved(st.doc.bounds());
+    assert_ne!(moved, original);
+    for (a, b) in moved.as_chunks::<4>().0.iter().zip(original.as_chunks::<4>().0) {
+        for c in [0, 2, 3] {
+            assert_eq!(a[c], b[c], "untargeted encoded sample {c}");
+        }
+    }
+    assert!((surface.sample_channel(45, 45, 1) - 0.22).abs() < 0.01, "use the captured background");
+    assert_eq!(st.doc.selection.as_ref().unwrap().content_bounds(), photocraft_geom::Rect::new(64, 48, 144, 108));
+    assert!(app.session.undo());
+    assert_eq!(app.session.active().unwrap().doc.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds()), original);
+    assert_eq!(app.session.active().unwrap().channel_view, view);
+    assert!(app.session.redo());
+    assert_eq!(app.session.active().unwrap().doc.layer(id).unwrap().surface().unwrap().to_interleaved(before.bounds()), moved);
+    assert_eq!(app.session.active().unwrap().channel_view, view);
 }
 
 /// Warp the active layer into an arc, then ↩.

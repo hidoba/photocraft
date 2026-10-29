@@ -306,70 +306,80 @@ fn prechecks_cannot_bypass_the_captured_channel_target() {
 }
 
 #[cfg(not(target_arch = "wasm32"))]
+fn wait_for_job(s: &mut Session, job: crate::jobs::JobId) -> crate::jobs::JobEvent {
+    let started = std::time::Instant::now();
+    loop {
+        if let Some(event) = s.poll_jobs().into_iter().find(|event| event.id == job) {
+            return event;
+        }
+        assert!(started.elapsed() < std::time::Duration::from_secs(10));
+        std::thread::sleep(std::time::Duration::from_millis(1));
+    }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
 #[test]
 fn panel_channel_background_jobs_hold_the_target_until_commit_or_cancel() {
     for depth in [SampleType::U8, SampleType::U16, SampleType::F32] {
         for cancel in [false, true] {
-            let mut s = session(ColorMode::Rgb, depth);
-            s.execute("channel.target", json!({"channel":"green"})).unwrap();
-            let before = s.active().unwrap().doc.clone();
-            let steps = s.active().unwrap().history.past_len();
-            // No explicit target: the running job must retain the resolved panel target.
-            let crate::jobs::Started::Job(job) = s.start("edit.transform", json!({"matrix":[1,0,0,1,2,0],"interpolation":"nearest"})).unwrap() else {
-                panic!("native transforms run as background jobs");
-            };
-            assert!(locked(&s));
-            assert!(s.execute("channel.target", json!({"channel":"blue"})).is_err());
-            assert!(s.edit::<()>("direct edit", |_, _| panic!("locked work must never run")).is_err());
-            s.execute("channel.setVisible", json!({"channel":"green","visible":false})).unwrap();
-            assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 0, "hiding the last eye must not restore RGB during commit");
-            assert!(locked(&s));
-            s.execute("channel.setVisible", json!({"channel":"green","visible":true})).unwrap();
-            assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 1);
-            s.execute("channel.setVisible", json!({"channel":"composite","visible":false})).unwrap();
-            assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 0, "the composite eye can hide every colour during commit");
-            assert_eq!(s.active().unwrap().channel_view.target, ChannelTarget::Color(1));
-            let view = s.active().unwrap().channel_view.clone();
-            if cancel {
-                assert!(s.cancel_job(job));
-            }
-            let started = std::time::Instant::now();
-            let event = loop {
-                if let Some(event) = s.poll_jobs().into_iter().find(|event| event.id == job) {
-                    break event;
-                }
-                assert!(started.elapsed() < std::time::Duration::from_secs(10));
-                std::thread::sleep(std::time::Duration::from_millis(1));
-            };
-            assert!(!locked(&s));
-            let st = s.active().unwrap();
-            assert_eq!(st.channel_view, view);
-            assert_eq!(st.history.past_len(), steps + usize::from(!cancel));
-            if cancel {
-                assert_eq!(event.outcome, crate::jobs::JobOutcome::Cancelled);
-                assert!(Arc::ptr_eq(&before, &st.doc));
-            } else {
-                assert!(matches!(event.outcome, crate::jobs::JobOutcome::Done(_)), "{:?}", event.outcome);
-                let original = before.layers[0].surface().unwrap().try_to_interleaved(before.bounds()).unwrap();
-                let moved = surface(&s).try_to_interleaved(before.bounds()).unwrap();
-                assert_ne!(moved, original);
-                let fmt = surface(&s).format();
-                let size = depth.bytes();
-                for (a, b) in moved.chunks_exact(fmt.bytes_per_pixel()).zip(original.chunks_exact(fmt.bytes_per_pixel())) {
-                    for c in [0, 2, 3] {
-                        assert_eq!(&a[c * size..(c + 1) * size], &b[c * size..(c + 1) * size]);
-                    }
-                }
-                assert!(s.undo());
-                assert_eq!(surface(&s).try_to_interleaved(before.bounds()).unwrap(), original);
-                assert_eq!(s.active().unwrap().channel_view, view);
-                assert!(s.redo());
-                assert_eq!(surface(&s).try_to_interleaved(before.bounds()).unwrap(), moved);
-                assert_eq!(s.active().unwrap().channel_view, view);
-            }
-            s.execute("channel.target", json!({"channel":"blue"})).unwrap();
+            check_background_job(depth, cancel);
         }
     }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn check_background_job(depth: SampleType, cancel: bool) {
+    let mut s = session(ColorMode::Rgb, depth);
+    s.execute("channel.target", json!({"channel":"green"})).unwrap();
+    let before = s.active().unwrap().doc.clone();
+    let steps = s.active().unwrap().history.past_len();
+    // No explicit target: the running job must retain the resolved panel target.
+    let crate::jobs::Started::Job(job) = s.start("edit.transform", json!({"matrix":[1,0,0,1,2,0],"interpolation":"nearest"})).unwrap() else {
+        panic!("native transforms run as background jobs");
+    };
+    assert!(locked(&s));
+    assert!(s.execute("channel.target", json!({"channel":"blue"})).is_err());
+    assert!(s.edit::<()>("direct edit", |_, _| panic!("locked work must never run")).is_err());
+    s.execute("channel.setVisible", json!({"channel":"green","visible":false})).unwrap();
+    assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 0, "hiding the last eye must not restore RGB during commit");
+    assert!(locked(&s));
+    s.execute("channel.setVisible", json!({"channel":"green","visible":true})).unwrap();
+    assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 1);
+    s.execute("channel.setVisible", json!({"channel":"composite","visible":false})).unwrap();
+    assert_eq!(s.active().unwrap().channel_view.visible_colors(3), 0, "the composite eye can hide every colour during commit");
+    assert_eq!(s.active().unwrap().channel_view.target, ChannelTarget::Color(1));
+    let view = s.active().unwrap().channel_view.clone();
+    if cancel {
+        assert!(s.cancel_job(job));
+    }
+    let event = wait_for_job(&mut s, job);
+    assert!(!locked(&s));
+    let st = s.active().unwrap();
+    assert_eq!(st.channel_view, view);
+    assert_eq!(st.history.past_len(), steps + usize::from(!cancel));
+    if cancel {
+        assert_eq!(event.outcome, crate::jobs::JobOutcome::Cancelled);
+        assert!(Arc::ptr_eq(&before, &st.doc));
+    } else {
+        assert!(matches!(event.outcome, crate::jobs::JobOutcome::Done(_)), "{:?}", event.outcome);
+        let original = before.layers[0].surface().unwrap().try_to_interleaved(before.bounds()).unwrap();
+        let moved = surface(&s).try_to_interleaved(before.bounds()).unwrap();
+        assert_ne!(moved, original);
+        let fmt = surface(&s).format();
+        let size = depth.bytes();
+        for (a, b) in moved.chunks_exact(fmt.bytes_per_pixel()).zip(original.chunks_exact(fmt.bytes_per_pixel())) {
+            for c in [0, 2, 3] {
+                assert_eq!(&a[c * size..(c + 1) * size], &b[c * size..(c + 1) * size]);
+            }
+        }
+        assert!(s.undo());
+        assert_eq!(surface(&s).try_to_interleaved(before.bounds()).unwrap(), original);
+        assert_eq!(s.active().unwrap().channel_view, view);
+        assert!(s.redo());
+        assert_eq!(surface(&s).try_to_interleaved(before.bounds()).unwrap(), moved);
+        assert_eq!(s.active().unwrap().channel_view, view);
+    }
+    s.execute("channel.target", json!({"channel":"blue"})).unwrap();
 }
 
 #[test]

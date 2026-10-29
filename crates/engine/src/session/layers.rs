@@ -1,5 +1,6 @@
 use super::history::fix_selection;
-use super::*;
+use super::{Arc, EngineError, LayerId, Result, Session, channel_cmds, layer_multi_cmds, type_cmds};
+use crate::channel_transform;
 
 impl Session {
     /// Replace the active document's active layer without creating a history step.
@@ -87,7 +88,8 @@ impl Session {
                 if clean {
                     st.saved_revision = st.revision;
                 }
-                st.last_damage = None;
+                // Only the refreshed layers' caches changed: their changed tiles.
+                st.last_damage = layer_multi_cmds::step_damage(&snapshot, &st.doc);
             }
         }
         busy

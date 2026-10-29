@@ -1,4 +1,5 @@
-use super::*;
+use super::{PhotocraftApp, gpu_canvas, gpu_status};
+use crate::channel_transform_preview;
 
 impl PhotocraftApp {
     /// Draw the document canvas on the GPU (custom WGSL shader) instead of via egui textures.
