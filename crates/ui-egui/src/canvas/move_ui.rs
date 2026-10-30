@@ -172,6 +172,7 @@ pub(crate) fn channel_texture(app: &mut PhotocraftApp, idx: usize, output: Optio
         mode: Default::default(),
         content_aware: None,
         skew_v: 0.0,
+        layers: Vec::new(),
     };
     let texture = p.gpu.as_mut().and_then(|g| {
         g.texture_move(&t, &view, app.session.prefs().interface.show_channels_in_color, display.as_ref().is_some_and(|d| d.encode_srgb), factor, p.bounds)

@@ -82,7 +82,7 @@ pub fn params(s: &Session, p: &Value) -> Result<Value> {
         }
         return Ok(out);
     }
-    if map.contains_key("layer") {
+    if map.contains_key("layer") || map.get("layers").is_some_and(|v| !v.is_null()) {
         map.insert("target".into(), json!("pixels"));
         return Ok(out);
     }

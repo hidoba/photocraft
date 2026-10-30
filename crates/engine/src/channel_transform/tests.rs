@@ -139,6 +139,8 @@ fn explicit_target_overrides_the_panel_and_an_explicit_layer_moves_whole() {
     assert_eq!(params(&s, &json!({})).unwrap()["target"], json!({"color":0}));
     let id = s.active().unwrap().active_layer.unwrap();
     assert_eq!(params(&s, &json!({"layer":id.0})).unwrap()["target"], "pixels");
+    assert_eq!(params(&s, &json!({"layers":[id.0]})).unwrap()["target"], "pixels");
+    assert_eq!(params(&s, &json!({"layers":null})).unwrap()["target"], json!({"color":0}));
     assert_eq!(params(&s, &json!({"layer":id.0,"target":{"color":2}})).unwrap()["target"], json!({"color":2}));
 }
 

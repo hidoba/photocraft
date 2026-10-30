@@ -1,7 +1,8 @@
-use super::begin::{fold_made, rect_to_quad_affine, take_back_made, warps_type};
+use super::begin::{fold_made, moves_kind, moving_layers, rect_to_quad_affine, take_back_made, warps_type};
 use super::options_bar::{rotate_about_pivot, scale_about_pivot};
 use super::{
-    Arc, DocId, JobEvent, JobId, JobOutcome, LayerContent, LayerId, MadeLayer, PhotocraftApp, Step, Steps, TransformPreview, TransformSession, corners, json,
+    Arc, DocId, JobEvent, JobId, JobOutcome, LayerContent, LayerId, MadeLayer, PhotocraftApp, Several, Step, Steps, TransformPreview, TransformSession,
+    corners, json,
 };
 
 /// Undo and Redo while the commit runs in the background (Free Transform, or Warp).
@@ -76,7 +77,12 @@ pub fn commit(app: &mut PhotocraftApp) {
         }
         app.run("edit.transform.warp", params)
     } else {
-        let mut p = json!({"layer": t.layer, "rect": t.rect, "quad": t.quad, "interpolation": t.interpolation});
+        let mut p = json!({"rect": t.rect, "quad": t.quad, "interpolation": t.interpolation});
+        if t.layers.is_empty() {
+            p["layer"] = json!(t.layer);
+        } else {
+            p["layers"] = json!(t.layers);
+        }
         if let Some(target) = &t.target {
             p["target"] = target.clone();
         }
@@ -179,7 +185,10 @@ pub fn end_if_left(app: &mut PhotocraftApp) {
     if editing_placed_smart_object {
         app.ui.transform = None;
         app.transform_preview = None;
-    } else if switched_document || (st.doc.layer(layer).is_none() && t.target.as_ref().is_none_or(|p| p != "quickMask" && p.get("channel").is_none())) {
+    } else if switched_document
+        || t.layers.iter().any(|id| st.doc.layer(LayerId(*id)).is_none())
+        || (st.doc.layer(layer).is_none() && t.target.as_ref().is_none_or(|p| p != "quickMask" && p.get("channel").is_none()))
+    {
         cancel(app);
     } else if switched_away(app) {
         commit(app);
@@ -209,18 +218,33 @@ pub fn follow_edits(app: &mut PhotocraftApp) {
     let (Some(t), Some(pv)) = (&app.ui.transform, app.transform_preview.as_mut()) else { return };
     let Some(follow) = pv.follow.as_mut() else { return };
     let Some(st) = app.session.active().filter(|st| st.doc.id == pv.doc.id && st.revision != follow.revision) else { return };
-    let id = LayerId(t.layer);
-    let (Some(live), Some(moving)) = (st.doc.layer(id), pv.doc.layer(id)) else { return };
+    let ids = moving_layers(t);
     let mut pd = (*st.doc).clone();
-    if let Some(l) = pd.layer_mut(id) {
-        l.content = moving.content.clone();
-        l.visible = l.visible && !follow.hidden;
+    for id in &ids {
+        let (Some(_), Some(moving)) = (st.doc.layer(*id), pv.doc.layer(*id)) else { return };
+        if let Some(l) = pd.layer_mut(*id) {
+            l.content = moving.content.clone();
+            l.visible = l.visible && !follow.hidden.contains(id);
+        }
     }
-    if let Some(a) = pv.above.as_mut() {
-        a.rebuild(&st.doc, id);
+    if let (Some(a), Some(top)) = (pv.above.as_mut(), ids.last()) {
+        a.rebuild(&st.doc, *top);
         a.hide_in(&mut pd.layers);
     }
-    pv.opacity = if live.visible { live.opacity * live.fill_opacity } else { 0.0 };
+    // Several layers' opacity, fill, visibility and styles are in their composite: composite them
+    // again when an edit changed how they look.
+    if let Some(sv) = pv.several.as_mut() {
+        let now = Several::shown(&st.doc, &sv.ids, &sv.lifted);
+        if now.layers != sv.moving.layers {
+            sv.moving = now;
+            pv.texture = sv.render();
+        }
+    }
+    if t.layers.is_empty()
+        && let Some(live) = st.doc.layer(LayerId(t.layer))
+    {
+        pv.opacity = if live.visible { live.opacity * live.fill_opacity } else { 0.0 };
+    }
     follow.revision = st.revision;
     pv.doc = Arc::new(pd);
 }
@@ -297,11 +321,22 @@ pub fn is_enabled(app: &PhotocraftApp, id: &str) -> Option<bool> {
         // No Toggle Last State or history jump under the box, and one box at a time.
         "edit.toggleLastState" | "history.selectState" | "edit.contentAwareScale" | "edit.puppetWarp" => Some(false),
         // Switching the captured channel box to Warp edits the session, not document pixels.
-        "edit.transform.warp" => Some(t.warp.is_none()),
+        "edit.transform.warp" if t.layers.is_empty() => Some(t.warp.is_none()),
         // Save for Web exports the committed document and would ignore the pending box (#6737).
         SAVE_FOR_WEB => Some(false),
         // Rotate and Flip turn the box (not while warping, where the mesh is the box).
         _ if box_preset(id).is_some() => Some(t.warp.is_none()),
+        // One box over several layers doesn't warp (#6501).
+        "edit.transform.warp"
+        | "layer.smartObjects.warp"
+        | "edit.transform.splitWarpCrosswise"
+        | "edit.transform.splitWarpHorizontally"
+        | "edit.transform.splitWarpVertically"
+        | "edit.transform.removeWarpSplit"
+            if !t.layers.is_empty() =>
+        {
+            Some(false)
+        }
         // Editable type can't be distorted (#2630, as #2701 rules for the menus outside a box).
         "edit.transform.distort" | "edit.transform.perspective" if moves_type(app, t) => Some(false),
         _ => None,
@@ -310,10 +345,7 @@ pub fn is_enabled(app: &PhotocraftApp, id: &str) -> Option<bool> {
 
 /// Does the box move an editable type layer (not its selection outline, a lone mask or a path)?
 pub(super) fn moves_type(app: &PhotocraftApp, t: &TransformSession) -> bool {
-    !t.selection
-        && t.target.is_none()
-        && t.path.is_none()
-        && app.session.active().and_then(|st| st.doc.layer(LayerId(t.layer))).is_some_and(|l| matches!(l.content, LayerContent::Text(_)))
+    !t.selection && t.target.is_none() && t.path.is_none() && moves_kind(app, t, |c| matches!(c, LayerContent::Text(_)))
 }
 
 /// Edit › Transform's Rotate and Flip presets while a box is open: what they do to the box, as
