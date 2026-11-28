@@ -45,7 +45,7 @@ fn moves_as_move_tool(app: &PhotocraftApp) -> bool {
     app.canvas_tools.mover.dragging()
         || (crate::move_ui::color_target(app).is_some() && app.canvas_tools.selection.pixel_drag_offset().is_some())
         || app.ui.tool == Tool::Move
-        || (crate::canvas::tools::takes_command_stand_in(app.ui.tool) && craft::ui::runtime::pointer::frame(app.ctx()).mods.cmd)
+        || (crate::canvas::tools::takes_command_stand_in(app.ui.tool) && craft::ui::runtime::pointer::mods(app.ctx()).cmd)
 }
 
 /// The selected pixels move with the drag, so the selection is not a place to snap to (#6290).

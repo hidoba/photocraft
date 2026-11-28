@@ -24,7 +24,7 @@ fn type_allow(typed: bool) -> BoxAllow {
 }
 
 /// The session over the source frame `rect`: the stored settings, the interpolation default and the nudge pause.
-/// `warp_ok` is false for a frame, several whole layers and Content-Aware Scale.
+/// `warp_ok` is false for frames, groups, several whole layers and Content-Aware Scale.
 fn open_session(app: &PhotocraftApp, rect: [f64; 4], allow: BoxAllow, warp_ok: bool) -> TransformSession<SessionWarp> {
     TransformSession::new(frame_of(rect))
         .allow(allow.with_warp(warp_ok))
@@ -93,8 +93,7 @@ fn begin_with_params(app: &mut PhotocraftApp, ctx: &egui::Context, params: serde
         return begin_several(app, ctx, doc, revision, id, targets);
     }
     let layer = doc.layer(id).ok_or("no layer")?;
-    let frame_only =
-        app.ui.tool == crate::state::Tool::Frame && layer.frame.is_some() && crate::frame_tool::target(app, layer) == crate::frame_tool::Target::Frame;
+    let frame_only = targets_frame_clip(app, layer);
     if photocraft_engine::transform_cmds::locked_for_transform(&doc, id) {
         // Photoshop refuses before the box opens rather than when it is committed (#2585).
         crate::dialogs::alerts::alert(app, tl!(LOCKED));
@@ -151,6 +150,8 @@ fn begin_with_params(app: &mut PhotocraftApp, ctx: &egui::Context, params: serde
     let opacity = layer.opacity * layer.fill_opacity;
     let whole = lifted.is_none();
     let allow = type_allow(matches!(layer.content, LayerContent::Text(_)));
+    // A group doesn't warp, as several layers don't (#16731).
+    let warp_ok = !frame_only && !matches!(layer.content, LayerContent::Group(_));
     // Reading the moving pixels and compositing the layers over them is the heavy part: hundreds
     // of megapixels on a large canvas. Done on the UI thread, the window stopped answering for
     // long enough that a Wayland compositor dropped it, so a large layer prepares as a job
@@ -182,7 +183,7 @@ fn begin_with_params(app: &mut PhotocraftApp, ctx: &egui::Context, params: serde
             ..OpenPreview::new(session, shown, textures, app.ui.tool)
         });
         app.ui.transform = Some(FreeTransform {
-            session: open_session(app, rect, allow, !frame_only),
+            session: open_session(app, rect, allow, warp_ok),
             id: session,
             layer: id.0,
             layers: Vec::new(),
@@ -394,8 +395,50 @@ pub(super) fn moves_kind(app: &PhotocraftApp, t: &FreeTransform, kind: fn(&Layer
     app.session.active().is_some_and(|st| moving_layers(t).iter().any(|id| st.doc.layer(*id).is_some_and(|l| kind(&l.content))))
 }
 
+/// Does the box move a group as one layer (not its mask, a path or a selection outline)?
+pub(super) fn moves_group(app: &PhotocraftApp, t: &FreeTransform) -> bool {
+    t.layers.is_empty() && !t.selection && t.target.is_none() && t.path.is_none() && moves_kind(app, t, |c| matches!(c, LayerContent::Group(_)))
+}
+
 /// Why Warp refuses with several layers selected.
 pub const WARP_ONE_LAYER: &str = "Warp works on one layer at a time: select a single layer";
+
+/// Why Warp refuses on a group (#16731).
+pub const WARP_GROUP: &str = "Warp doesn't work on a group";
+
+const WARP_FRAME: &str = "A frame supports affine transforms; select its image to warp it";
+
+fn targets_frame_clip(app: &PhotocraftApp, layer: &photocraft_doc::Layer) -> bool {
+    app.ui.tool == crate::state::Tool::Frame && layer.frame.is_some() && crate::frame_tool::target(app, layer) == crate::frame_tool::Target::Frame
+}
+
+/// Why the open box can't warp.
+fn warp_refusal(app: &PhotocraftApp) -> Option<&'static str> {
+    let t = app.ui.transform.as_ref()?;
+    if crate::frame_tool::frame_transform(t) {
+        Some(WARP_FRAME)
+    } else if !t.layers.is_empty() {
+        Some(WARP_ONE_LAYER)
+    } else {
+        moves_group(app, t).then_some(WARP_GROUP)
+    }
+}
+
+/// Refuse frame clips and whole groups before preparing a transform box, which can run as a job.
+fn warp_refusal_before_box(app: &PhotocraftApp) -> Option<&'static str> {
+    if crate::vector_ui::free_transform_path(app).is_some() {
+        return None;
+    }
+    let st = app.session.active()?;
+    let id = st.active_layer?;
+    let layer = st.doc.layer(id)?;
+    let targets = photocraft_engine::transform_cmds::box_targets(&st.doc, &photocraft_engine::transform_cmds::selection_targets(st));
+    let target = crate::canvas::paint_target(app);
+    if targets != [id] || !photocraft_engine::transform_cmds::lone_target(&st.doc, Some(id), &json!({ "target": target })).is_ok_and(|t| t.is_none()) {
+        return None;
+    }
+    if targets_frame_clip(app, layer) { Some(WARP_FRAME) } else { matches!(layer.content, LayerContent::Group(_)).then_some(WARP_GROUP) }
+}
 
 /// Free Transform on a copy (⌥⌘T, no menu item): duplicates the active layer (with a selection,
 /// its selected pixels, as Layer via Copy) and transforms the copy (#352).
@@ -737,22 +780,16 @@ pub fn begin_warp(app: &mut PhotocraftApp, ctx: &egui::Context) -> Result<(), St
     if app.ui.transform.as_ref().is_some_and(|t| t.content_aware.is_some()) {
         return Err(CAS_ONLY_SCALES.into());
     }
-    if app.ui.transform.as_ref().is_some_and(|t| !t.layers.is_empty()) {
-        return Err(WARP_ONE_LAYER.into());
+    let refusal = if app.ui.transform.is_some() { warp_refusal(app) } else { warp_refusal_before_box(app) };
+    if let Some(why) = refusal {
+        return Err(tl!(why).into());
     }
-    let already_open = app.ui.transform.is_some();
-    if !already_open {
+    if app.ui.transform.is_none() {
         begin(app, ctx)?;
-        if app.ui.transform.as_ref().is_some_and(|t| !t.layers.is_empty()) {
+        if let Some(why) = warp_refusal(app) {
             cancel(app);
-            return Err(WARP_ONE_LAYER.into());
+            return Err(tl!(why).into());
         }
-    }
-    if app.ui.transform.as_ref().is_some_and(crate::frame_tool::frame_transform) {
-        if !already_open {
-            cancel(app);
-        }
-        return Err(tl!("A frame supports affine transforms; select its image to warp it").into());
     }
     enter_warp(app, ctx);
     Ok(())

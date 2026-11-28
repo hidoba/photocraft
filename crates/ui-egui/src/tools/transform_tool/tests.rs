@@ -2264,3 +2264,6 @@ mod channel_merge_tests;
 
 #[path = "warp_remove_split_tests.rs"]
 mod warp_remove_split_tests;
+
+#[path = "group_warp_greyed_tests.rs"]
+mod group_warp_greyed_tests;

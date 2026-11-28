@@ -4,7 +4,7 @@ use super::{
     Region, Result, Session, Smudge, Stroke, StrokePoint, Surface, ToneRange, Value, alpha_index, apply_dab_stroke, bad, damage_json, dodge_burn, flag,
     from_rgba_into, has_pixel_layer, json, local_blur, local_sharpen, num, parse_blend, parse_brush, run_stroke, sponge, string, to_rgba,
 };
-use photocraft_algo::retouch::{luma, sponge_rgb, tone_curve};
+use photocraft_algo::retouch::{luma, single_channel_midtones, sponge_rgb, tone_curve};
 use photocraft_color::{ColorMode, SampleType};
 
 // ---------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ const LINEAR_MIDTONES_STRENGTH: f32 = 1.34;
 
 /// The Midtones Dodge (`burn = false`) or Burn curve for one linear value of a 32-bit document at
 /// exposure `e` (0..1): `v ± 1.34·e·v²·(1 − v)^1.5`, each channel on its own. It is fitted to the
-/// reference's 32-bit results (#12687), which tone the stored linear values: much gentler on the
+/// reference's 32-bit results (#12687, #12674), which tone the stored linear values: much gentler on the
 /// mid tones than the 8-bit curve on gamma-encoded values, and the shadows are left alone. Black
 /// and white stay put, values outside 0..1 (light above white) are kept as they are, and tones
 /// stay in order at every exposure.
@@ -203,15 +203,20 @@ fn linear_midtones(v: f32, e: f32, burn: bool) -> f32 {
     if burn { v - d } else { v + d }
 }
 
-/// The 32-bit reference was measured at Exposure 50 % only (#12687); other exposures keep the
+/// The Grayscale and layer-mask reference was measured at Exposure 50 % only (#12675, #12689);
+/// other exposures keep the RGB curve.
+const MEASURED_SINGLE_CHANNEL_EXPOSURE: f32 = 0.5;
+
+/// The 32-bit reference was measured at Exposure 50 % only (#12687, #12674); other exposures keep the
 /// gamma curve.
 const MEASURED_LINEAR_EXPOSURE: f32 = 0.5;
 
 /// Dodge or Burn of a 32-bit colour with the curve the other bit depths use, except that light above
 /// white isn't clipped: Protect Tones scales such a colour to its new luma without gamut
-/// compression, which would pull it back to 1.0 (#12687). Such a colour whose luma isn't positive
-/// (a negative channel outweighs it) can't be scaled by luma, so it takes the per-channel curve, as
-/// with Protect Tones off, which keeps light above white too. Other colours get today's result.
+/// compression, which would pull it back to 1.0 (#12687, #12674). Such a colour whose luma isn't
+/// positive (a negative channel outweighs it) can't be scaled by luma, so it takes the per-channel
+/// curve, as with Protect Tones off, which keeps light above white too. Other colours get today's
+/// result.
 #[inline]
 fn dodge_burn_float(c: [f32; 3], e: f32, range: ToneRange, burn: bool, protect: bool) -> [f32; 3] {
     if protect && c.iter().any(|&v| v > 1.0) {
@@ -238,7 +243,7 @@ fn tone_range(p: &Value, cmd: &str) -> Result<ToneRange> {
 /// turned into its per-dab effect, for the commit and the live preview alike.
 #[derive(Clone, Debug, PartialEq)]
 pub(super) enum DabTool {
-    Tone { burn: bool, range: ToneRange, exposure: f32, protect: bool },
+    Tone { burn: bool, range: ToneRange, exposure: f32, protect: bool, single: bool },
     Sponge { saturate: bool, vibrance: bool },
     Focus { sharpen: bool, strength: f32, protect: bool, sigma: f32 },
     Smudge { strength: f32, finger: Option<[f32; 4]>, max_size: f32, mode: BlendMode },
@@ -300,6 +305,10 @@ impl DabTool {
                     range: tone_range(p, cmd)?,
                     exposure: num(p, "exposure", 50.0).clamp(1.0, 100.0) / 100.0,
                     protect: flag(p, "protectTones", true),
+                    // The layer's pixels or its layer mask: there a Grayscale surface takes the
+                    // reference's single-channel curve. An alpha channel, the Quick Mask and a
+                    // filter mask weren't measured.
+                    single: matches!(crate::channel_cmds::target_of(p), crate::channel_cmds::Target::Pixels | crate::channel_cmds::Target::Mask),
                 };
                 (tool, if burn { "Burn Tool" } else { "Dodge Tool" })
             }
@@ -345,19 +354,27 @@ impl DabTool {
     pub(super) fn effect(&self, fmt: PixelFormat, spacing: f32) -> DabEffect {
         let sp = spacing;
         match self.clone() {
-            // A 32-bit RGB document holds linear values, which the reference's default Dodge tones
-            // with its own curve. Grayscale, the other ranges, Protect Tones off and the other
+            // An 8-bit Grayscale document or layer mask has its own default curve in the reference
+            // (#12675, #12689). Other depths, ranges, exposures, Protect Tones off and the other
+            // single-channel targets weren't measured and keep the RGB curve.
+            Self::Tone { burn, range: ToneRange::Midtones, exposure, protect: true, single: true }
+                if fmt.mode == ColorMode::Grayscale && fmt.sample == SampleType::U8 && (exposure - MEASURED_SINGLE_CHANNEL_EXPOSURE).abs() < 1e-4 =>
+            {
+                tone_stroke(fmt, move |c| c.map(|v| single_channel_midtones(v, burn)))
+            }
+            // A 32-bit RGB document holds linear values, which the reference's default Dodge and Burn
+            // tone with their own curve. Grayscale, the other ranges, Protect Tones off and the other
             // exposures weren't measured there and keep the gamma curve, without clipping light
             // above white.
-            Self::Tone { burn: false, range: ToneRange::Midtones, exposure, protect: true }
+            Self::Tone { burn, range: ToneRange::Midtones, exposure, protect: true, .. }
                 if fmt.sample == SampleType::F32 && fmt.mode == ColorMode::Rgb && (exposure - MEASURED_LINEAR_EXPOSURE).abs() < 1e-4 =>
             {
-                tone_stroke(fmt, move |c| c.map(|v| linear_midtones(v, exposure, false)))
+                tone_stroke(fmt, move |c| c.map(|v| linear_midtones(v, exposure, burn)))
             }
-            Self::Tone { burn, range, exposure, protect } if fmt.sample == SampleType::F32 => {
+            Self::Tone { burn, range, exposure, protect, .. } if fmt.sample == SampleType::F32 => {
                 tone_stroke(fmt, move |c| dodge_burn_float(c, exposure, range, burn, protect))
             }
-            Self::Tone { burn, range, exposure, protect } => tone_stroke(fmt, move |c| dodge_burn(c, exposure, range, burn, protect)),
+            Self::Tone { burn, range, exposure, protect, .. } => tone_stroke(fmt, move |c| dodge_burn(c, exposure, range, burn, protect)),
             // Flow is already in the dab's coverage. The reference RGB response applies to integer
             // RGB surfaces, including 16-bit. Float RGB and the other models use the legacy curve.
             Self::Sponge { saturate, vibrance } if fmt.mode == ColorMode::Rgb && fmt.sample != SampleType::F32 => {
@@ -884,5 +901,17 @@ mod smudge_refuses_indexed_tests;
 mod smudge_mode_tests;
 
 #[cfg(test)]
+#[path = "burn_grayscale_tests.rs"]
+mod burn_grayscale_tests;
+
+#[cfg(test)]
+#[path = "dodge_grayscale_tests.rs"]
+mod dodge_grayscale_tests;
+
+#[cfg(test)]
 #[path = "dodge_32bit_linear_tests.rs"]
 mod dodge_32bit_linear_tests;
+
+#[cfg(test)]
+#[path = "burn_32bit_linear_tests.rs"]
+mod burn_32bit_linear_tests;

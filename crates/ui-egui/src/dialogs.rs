@@ -13,6 +13,17 @@ use serde_json::Value;
 
 use crate::PhotocraftApp;
 
+/// The File Info dialog's title: the active document's name without its extension (#13824).
+pub(crate) fn file_info_title(app: &PhotocraftApp) -> String {
+    app.session.active().map_or_else(
+        || tl!("File Info").to_string(),
+        |st| match st.doc.name.rsplit_once('.') {
+            Some((stem, _)) if !stem.is_empty() => stem.to_owned(),
+            _ => st.doc.name.clone(),
+        },
+    )
+}
+
 /// What a family of the hosted dialogs does with each result, and who owns which dialog key.
 pub(crate) mod params {
     use std::path::{Path, PathBuf};
@@ -64,6 +75,23 @@ pub(crate) mod params {
         }
     }
 
+    /// The File Info dialog's document, captured when it opened (#13824).
+    fn file_info_document(captured: &Value) -> Option<DocId> {
+        captured.get("document").and_then(Value::as_u64).map(DocId)
+    }
+
+    /// File Info's OK: run it on the document it opened on, even when another tab is active (#13824).
+    fn run_file_info(app: &mut PhotocraftApp, ctx: &egui::Context, result: ParamResult) {
+        let doc = file_info_document(&captured(app, "file.fileInfo"));
+        let outcome = match doc {
+            Some(doc) => app.with_document(doc, |app| filter_dialog::run_command(app, ctx, "file.fileInfo", result)),
+            None => filter_dialog::run_command(app, ctx, "file.fileInfo", result),
+        };
+        if let Err(error) = outcome {
+            crate::notices::error(app, error);
+        }
+    }
+
     /// Every family of parameter dialogs, first match wins; the generic filter family owns what is left.
     pub(crate) const PARAM_FAMILIES: &[ParamFamily] = &[
         ParamFamily { check: Some(fill_ui::check), ..ParamFamily::new(fill_ui::owns, fill_ui::run) },
@@ -109,6 +137,7 @@ pub(crate) mod params {
             cancel: Some(filter_dialog::cancel),
             ..ParamFamily::new(|key| key == "file.automate.batch", filter_dialog::run)
         },
+        ParamFamily { document: Some(file_info_document), ..ParamFamily::new(|key| key == "file.fileInfo", run_file_info) },
         ParamFamily { cancel: Some(filter_dialog::cancel), ..ParamFamily::new(crate::view_cmds::dialogs::is_form, filter_dialog::run) },
         crate::prefs_ui::PRESETS_FAMILY,
         crate::swatches_ui::SWATCH_NAME_FAMILY,
@@ -446,6 +475,7 @@ pub(crate) fn prompts_take(app: &mut PhotocraftApp, ctx: &egui::Context) {
 /// The families that take their own results (one `take(app, ctx)` each), in order.
 pub(crate) const TAKERS: &[fn(&mut PhotocraftApp, &egui::Context)] = &[
     alerts::take,
+    crate::file_open::take_open_alerts,
     discard_ui::take,
     open_prompt::take,
     credits::take,
@@ -743,6 +773,9 @@ mod arbitrary_ruler_prefill_tests;
 pub mod assign_profile_layers_alert;
 #[cfg(test)]
 mod assign_profile_layers_alert_tests;
+#[cfg(test)]
+mod auto_align_dialog_tests;
+pub(crate) mod auto_align_ui;
 pub(crate) mod bitmap_dialog;
 pub mod blend_options;
 pub mod blur_pins;
@@ -773,6 +806,8 @@ pub mod delete_layer_prompt;
 pub mod discard_ui;
 pub mod disk_change_prompt;
 pub mod distort_ui;
+#[cfg(test)]
+mod duplicate_layer_other_document_name_tests;
 pub mod duplicate_layer_ui;
 pub mod equalize_ui;
 pub mod export_dialog;
